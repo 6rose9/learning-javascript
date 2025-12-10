@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+
+<body>
+    <script>
+
+        let stack = {
+            items: [],
+            push(item) {
+                this.items.push(item);
+            },
+            pop() {
+                return this.items.pop();
+            }
+        };
+
+        stack.push(20);
+        stack.push(10);
+        stack.push(23);
+
+        // console.log("Popped item ", stack.pop());
+
+        stack.items = []; // cons: can overrite from outside
+
+        // console.log("Popped item ", stack.pop()); // undefined
+
+        /* 
+        Closure Function __ factory function, class without class, object creator function
+
+            # private variable / data
+            # inner functions can access variable of outer function
+            # new object created every time the factory runs
+        */
+       
+        function Stack1() {
+
+            // private variable to store value
+            let items = [];
+
+            // inner functions 
+            function push(item) {
+                items.push(item);
+            }
+
+            function pop() {
+                return items.pop();
+            }
+
+            return {
+                push,
+                pop,
+            }
+        }
+
+        Stack1().push(50);
+        // console.log(Stack1().pop()); // undefined bcz different stack obj
+
+        let stackobj = Stack1();
+
+        // stackobj.push(25);
+        // stackobj.push(23);
+
+        // console.log(stackobj.pop());
+
+        class Stack2 {
+            #items = []; // private field
+
+            push(item) { this.#items.push(item); }
+            pop() { return this.#items.pop() }
+        }
+
+        const stackobj2 = new Stack2();
+        stackobj2.push(10);
+        console.log(stackobj2.pop());
+
+        /*
+        When use closures instead of classes
+            # truly private data
+            # functional / factory style
+            # small module or library, no need for inheritance
+        */
+
+    </script>
+</body>
+
+</html>
