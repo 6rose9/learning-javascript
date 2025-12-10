@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Object</title>
+</head>
+
+<body>
+    <script>
+
+        /* 
+         * Every object inherits parent object  that has prototype object
+         * Read step by step until parent object if variable is not found
+        */
+        const obj = new Object();
+        console.log(`Parent Object: `, obj);
+        console.log(`Object Prototype:`, obj.__proto__);
+
+        const dateobj = new Date(); // Date() is constructor
+        console.log(`Date Object:`, dateobj);
+        console.log(`Date Object inherits parent object prototype`, dateobj.__proto__);
+
+        let parent = {
+            x: 10,
+            y: 20,
+        };
+        console.log('parent object:', parent);
+
+        let obj2 = Object.create(parent);
+        console.log(`obj2`, obj2);
+
+        // Modify parent object
+        Object.prototype.toString = function () {
+            return "Hello World";
+        }
+
+        console.log('Obj2.x: ', obj2.x); // it doesn't have x, so read from parent object
+        console.log('Obj2.toString: ', obj2.toString());
+
+        // console.log('Array: ', Array);
+        // console.log('Type of array:', typeof Array);
+
+        obj2.x = 100; // write
+        console.log('obj2.x: ', obj2.x); // read from itself
+        console.log('parent.x: ', parent.x); // don't overwrite
+        console.log('obj2.z:', obj2.z); // undefined
+
+        let student = {
+            name: "",
+            age: 0,
+            skill: [],
+        };
+
+        let student1 = Object.create(student);
+        let student2 = Object.create(student);
+
+        console.log(student1);
+        console.log(student2);
+
+        // let student3 = new student(); new works only with constructor functions (or classes)
+        // console.log(student3);
+
+    </script>
+</body>
+
+</html>
+
+<!-- 22:17 -->
