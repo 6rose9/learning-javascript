@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+
+<body>
+    <script>
+        function uniqueId() {
+            let id = 0;
+            return function () {
+                id++;
+                return id;
+            }
+        }
+
+        let unique = nuiqueId(); // function call
+        console.log('Unique Id', unique());
+        console.log('Unique Id', unique());
+
+        let generateID = uniqueId();
+
+        console.log('Generate ID', generateID());
+        console.log('Generate ID', generateID());
+
+        const isEqual = (unique === generateID);
+        console.log("Is equal? " , isEqual);
+
+    </script>
+</body>
+
+</html>

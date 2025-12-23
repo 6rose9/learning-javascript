@@ -1,0 +1,25 @@
+<html>
+<script>
+    /*
+    - rest parameter( variable length parameters)
+    - must have only one time for rest parameter
+    - should be right side
+    */
+    function sum(...numbers) {
+        console.log('before rest parameter ', arguments);
+        console.log('numbers ', numbers);
+        let total = 0;
+
+        for (let n of numbers) {
+            total += n;
+        }
+
+        return total;
+    }
+
+    let result = sum(10, 20, 30, 70);
+    console.log('Result ', result);
+
+</script>
+
+</html>

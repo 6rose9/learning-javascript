@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply Use Case</title>
+</head>
+
+<body>
+    <script>
+        let arr = [10, 20, -4, 7, 80];
+        console.log("Math.min ", Math.min(20, 50, 50, -89, 100));
+
+        // Array doesn't have min()
+        console.log("Math.min for Array", Math.min.apply(null, arr));
+
+        // modern js (array destructuring)
+        console.log("Math.min for Array", Math.min(...arr));
+    </script>
+</body>
+
+</html>

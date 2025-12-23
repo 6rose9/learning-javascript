@@ -1,0 +1,16 @@
+<html>
+<script>
+    let circle = {
+        radius: 10,
+        get area() {
+            console.log('Getting area....');
+            return Math.PI * this.radius * this.radius;
+        }
+    }
+
+    // area is not a function
+    console.log('Area ', circle.area);
+
+</script>
+
+</html>

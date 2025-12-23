@@ -1,0 +1,48 @@
+<html>
+<script>
+    function add(x, y) { // parameter
+        return x + y;
+    }
+
+    let result = add(10, 20) // argument
+    console.log("Result is ", result);
+
+    // primitive type parameter passing
+    function inc(x) {
+        x++;
+    }
+
+    let a = 10;
+    inc(a);
+
+    // a = 10 because primitive type isn't reference each other
+    console.log('a = ', a);
+
+    // reference parameter passing
+    function incObj(obj) {
+        obj.count++;
+    }
+
+    let counter = { count: 10 };
+
+    incObj(counter);
+    console.log('counter = ', counter);
+
+    //-----------------------------------------
+
+    function incObj2(obj) {
+        return obj = {
+            count: 100
+        }
+    }
+
+    let counter2 = { count: 10 };
+
+    incObj2(counter2); // obj = counter
+    console.log('counter = ', counter2);
+    console.log('counter ', incObj2());
+
+
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Invocation</title>
+</head>
+
+<body>
+    <script>
+        // Function declaration / definition → creating the function
+        function hello() {
+            console.log('function this', this); // `this` refers to the global object (window in browsers)
+            // console.log('Hello World');
+        }
+
+        /*
+         Function Invocation → calling the function so it runs
+        */
+        hello();
+
+        /*
+         Method Invocation
+        */
+        let obj = {
+            name: 'Turing',
+            // function within obj is a method
+            greet: function () {
+                console.log('method this ', this); // `this` refers to object
+                // console.log('Hello', this.name);
+            }
+        }
+        // invoke as method and need to call from obj
+        obj.greet();
+
+        /*
+         Constructor Invocation
+        */
+        function Human() {
+            console.log('constructor this', this); //`this` refers to the newly created instance
+        }
+        
+        // invoke as constructor with new keyword ( old school way before class)
+        let human = new Human();
+
+        console.log('Human', human);
+    </script>
+</body>
+
+</html>

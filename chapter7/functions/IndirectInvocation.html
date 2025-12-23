@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indirect Function Inovation</title>
+</head>
+
+<body>
+    <script>
+        // # throw error for this.name
+        // 'use strict';
+        let obj = {
+            name: "Turing",
+            greet: function (message) {
+                console.log('this ', this);
+                console.log('Hello, ', message, this.name);
+            }
+        }
+
+        // # invoke function
+        // obj.greet("how are you?");
+
+        // # not invoke function
+        let greet = obj.greet;
+        // console.log("variable function greet(not invoke)", greet);
+
+        // # invoke variable function ( this keyword is undefined)
+        // greet("how are you?");
+
+        // # solution 1
+        // greet.call(obj, 'hi');
+
+        let obj2 = {
+            name: 'John',
+        }
+
+        // greet.call(obj2, 'Hello');
+
+        // # solution 2
+        // # give parameter using array instead of ,
+        greet.apply(obj, ['Good Morning!']);
+
+        // # solution 3
+        // # obj and method are together
+        // # obj2 represent for this
+        // # not invoke
+        let func = obj.greet.bind(obj2, 'Howdy');
+        func();
+
+    </script>
+</body>
+
+</html>

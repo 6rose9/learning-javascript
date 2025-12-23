@@ -1,0 +1,26 @@
+<html>
+<script>
+    // ----------------------------------optional parameter
+    function greet(message) {
+        console.log('Hello', message);
+    }
+
+    greet(); // undefined
+
+    // ----------------------------------default parameter
+    function greet(message = "default...") {
+        console.log('hello, ', message);
+    }
+
+    greet();
+
+    // ----------------------------------default parameter always should have right side of parameters
+    function greet(greeting, ending = "Thanks", message) {
+        console.log(greeting, message, ending);
+    }
+
+    greet("hello", "how are you?"); // don't know "how are you?" mean for message
+
+</script>
+
+</html>
