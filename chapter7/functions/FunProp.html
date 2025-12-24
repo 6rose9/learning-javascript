@@ -1,0 +1,25 @@
+<html>
+    <script>
+        /* Functions are objects and invokable */
+        function hello(){
+            console.log("Hello World .... \n", hello.data);
+        }
+
+        hello.data = "Some data attached to function";
+        console.log(hello.data);
+
+        hello();
+
+        function trackCount(){
+            trackCount.count++;
+            console.log('Function called ', trackCount.count, 'times');
+        }
+
+        trackCount.count = 0;
+        
+        trackCount();
+        trackCount();
+        trackCount();
+
+    </script>
+</html>

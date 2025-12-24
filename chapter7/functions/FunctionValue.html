@@ -1,0 +1,35 @@
+<html>
+<script>
+    /*
+        - function as value or first-class value
+        - there is 3 rules to be first-class value
+    */
+
+    function hello() {
+        console.log('Hello World');
+    }
+
+    function another(fun) {
+        console.log('Inside another function');
+        fun();
+    }
+
+    function returnFun() {
+        console.log('Inside return function');
+        return hello;
+    }
+
+    // # Rule 1 (Function can be assigned to variable ?)
+    let fun = hello;
+    fun();
+
+    // # Rule 2 (Function can be passed as parameters ?)
+    another(hello);
+
+    // # Rule 3 (Function can be returned from return function?)
+    returnFun()();
+
+    // eg. hello() is first-class or function value
+</script>
+
+</html>

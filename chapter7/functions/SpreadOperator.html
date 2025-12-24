@@ -9,6 +9,18 @@
     console.log("Array min", Math.min(arr));
     console.log("Array min", Math.min());
     console.log(typeof Infinity);
+
+    // object destructuring
+    function display({x, y}){
+        console.log('x ', x);
+        console.log('y ', y);
+    }
+
+    // invoke function
+    display({
+        x: 10,
+        y: 20
+    });
 </script>
 
 </html>
