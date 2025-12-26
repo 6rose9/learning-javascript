@@ -1,0 +1,26 @@
+<html>
+<script>
+    let parent = {
+        x: 10,
+        y: 20,
+        items: [10],
+    };
+
+    let obj1 = Object.create(parent);
+    let obj2 = Object.create(parent);
+
+    // read from parent and then push to parent
+    obj1.items.push(20);
+    obj2.items.push(30);
+
+    console.log('Parent ', parent.items);
+    console.log('Obj1 ', obj1.items);
+    console.log('Obj2 ', obj2.items);
+
+    // write 
+    obj1.items = [20]; // assignment operator
+    console.log("Obj1 ", obj1.items);
+
+</script>
+
+</html>

@@ -14,6 +14,7 @@
          * Every object inherits parent object  that has prototype object
          * Read step by step until parent object if variable is not found
         */
+        // method 1 (create object)
         const obj = new Object();
         console.log(`Parent Object: `, obj);
         console.log(`Object Prototype:`, obj.__proto__);
@@ -22,14 +23,15 @@
         console.log(`Date Object:`, dateobj);
         console.log(`Date Object inherits parent object prototype`, dateobj.__proto__);
 
+        // method 2 (create object)
         let parent = {
             x: 10,
             y: 20,
         };
-        console.log('parent object:', parent);
+        console.log('parent object:', parent); // parent obj { x: 10, y: 20 } -> prototype object
 
         let obj2 = Object.create(parent);
-        console.log(`obj2`, obj2);
+        console.log(`obj2`, obj2); // obj2 {} -> prototype object { x: 10, y: 20 }  -> prototype object
 
         // Modify parent object
         Object.prototype.toString = function () {
@@ -56,15 +58,19 @@
         let student1 = Object.create(student);
         let student2 = Object.create(student);
 
-        console.log(student1);
-        console.log(student2);
+        console.log("Student 1 ", student1);
+        console.log("Student 2 ", student2);
 
-        // let student3 = new student(); new works only with constructor functions (or classes)
-        // console.log(student3);
+        // let student3 = new student(); 
+        // console.error("Student 3 ", student3); // new keywork only with constructor functions (or classes)
+
+        // let student4 = Object.create();
+        // console.error("Student 4 ", student4); // Object.create: At least 1 argument required,
+
+        let student5 = new Object();
+        console.log("Student 5 ", student5);
 
     </script>
 </body>
 
 </html>
-
-<!-- 22:17 -->
