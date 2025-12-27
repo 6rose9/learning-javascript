@@ -1,15 +1,25 @@
 <html>
-    <script>
-        
-        let obj = {
-            name: 'John Wick',
-            age: 45, 
-            nickname: 'John'
-        }
+  <script>
+    let obj = {
+      name: "John Wick",
+      age: 45,
+      "nick name": "John",
+    };
 
-        let propName = 'name';
-        console.log('Obj["name"] =>', obj[propName]);
-        console.log('Obj["another name"] =>', obj['nickname']);
-      
-    </script>
+    let keypName = "name";
+    console.log('Obj["name"] =>', obj[keypName]);
+    console.log('Obj["another name"] =>', obj["nick name"]);
+    console.log('obj["name"] =>', obj["name"]);
+
+    let obj2 = {
+      x: 200,
+      y: 3,
+      z: 25,
+    };
+
+    for (const key in obj2) {
+      console.log("key", key, "obj2[key]", obj2[key]);
+    }
+    
+  </script>
 </html>
