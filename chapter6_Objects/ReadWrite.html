@@ -20,6 +20,13 @@
     for (const key in obj2) {
       console.log("key", key, "obj2[key]", obj2[key]);
     }
+
+    // objects are dynamic (can add / remove properties)
+
+    obj2.another = "Hello";
+    console.log('Obj2 ', obj2);
+
+    obj2.address.city = "YGN"; // obj2.address is undefined
     
   </script>
 </html>

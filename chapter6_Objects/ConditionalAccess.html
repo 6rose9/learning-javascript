@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Access</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            name: 'Jhon Wick',
+            age: 45,
+            // address: {
+            //     city: "YGN"
+            // }
+        }
+
+        console.log('City ', obj?.address?.city);
+
+        //old school
+        console.log('City ', obj && obj.address && obj.address.city);
+
+        // old school: problem ( if program is large and handle dynamic values)
+        const user = {
+            name: "Alex",
+            loginCount: 0,   // valid value (user exists but never logged in)
+            isActive: false // valid value
+        };
+
+        // Using && to access a value
+        // this could incorrectly mean: User does not exist
+        console.log(user && user.loginCount && "Has logged in"); //0
+
+
+        // another example in real world
+        const settings1 = {
+            notifications: {
+                email: false // valid value
+            }
+        };
+
+        const settings2 = {
+            notifications: {
+                // email missing
+            }
+        };
+
+        // Using &&
+        const a = settings1 && settings1.notifications && settings1.notifications.email;
+        const b = settings2 && settings2.notifications && settings2.notifications.email;
+
+        console.log(a); // false
+        console.log(b); // undefined
+
+        if (!a) {
+            console.log(`a is ${a}`)
+        }
+
+        if (!b) {
+            console.log(`b is ${b}`)
+        }
+
+        const c = settings1?.notifications?.email; // false
+        const d = settings2?.notifications?.email; // undefined
+
+        if (!c) {
+            console.log(`c is ${c}`)
+        }
+
+        if (!d) {
+            console.log(`d is ${d}`)
+        }
+
+        if (a === false) {
+            console.log("User explicitly disabled email");
+        }
+
+        if (b === undefined) {
+            console.log("No email setting provided");
+        }
+
+        if (c === false) {
+            console.log("User explicitly disabled email");
+        }
+
+        if (d === undefined) {
+            console.log("No email setting provided");
+        }
+
+
+        /*
+            && is safe when you explicitly compare the result (=== true / false / undefined).
+            It becomes dangerous when used directly in conditions or truthy checks.
+
+            ?. avoids runtime errors, but explicit comparisons are still required when false / 0 are valid values
+
+        */
+
+    </script>
+</body>
+
+</html>
