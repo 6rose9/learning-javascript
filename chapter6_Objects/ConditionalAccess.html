@@ -98,6 +98,36 @@
 
         */
 
+        // delete obj property
+        let obj2 = {
+            name: 'John Wick',
+            age: 45,
+            address: {
+                city: 'YANGON',
+                no: 0
+            }
+        }
+
+        delete obj2?.address?.city;
+
+        console.log('City ', obj2?.address?.city); // undefined
+
+        let arr = [10, 30, 43];
+        delete arr[0]; // only delete value, not index (should not use delete for array)
+        console.log('Arr ' , arr); //(3) [empty, 30, 43]
+
+        // key in obj
+        console.log('city in obj2 =>', 'city' in obj2); // false
+        console.log('toString in obj2 =>', 'toString' in obj2); // true
+
+        // hasOwnProperty
+        console.log('obj2 has its own property name? => ', obj2.hasOwnProperty('name')); // true : name is its own property 
+        console.log('obj2 has its own property toString? => ', obj2.hasOwnProperty('toString')); //fasle : toString is its parent obj property
+
+        // own property enumerable 
+        console.log('obj2.name isEnumerable ? => ', obj2.propertyIsEnumerable('name') ); // true
+        console.log('obj2.toString isEnumerable ? =>,', obj2.propertyIsEnumerable('toString')); //false
+
     </script>
 </body>
 
