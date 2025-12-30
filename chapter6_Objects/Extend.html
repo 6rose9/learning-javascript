@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extend Object</title>
+</head>
+
+<body>
+    <script>
+
+        let target = { x: 1 }, source = { y: 2, z: 3 };
+
+        // old school
+        for(let p in source){
+            target[p] = source[p];
+        }
+
+        // console.log(`Source is : `, source);
+        // console.log(`Target :`, target);
+
+        // ESM
+
+        let first = {}
+
+        let second = {
+            a: 100,
+            c: 10
+        }
+
+        let third = {
+            b: 200,
+            a: 50
+        }
+
+        let obj = Object.assign(first, second, third); // r to l -> temp assign ( third -> second -> first -> obj)
+        console.log('Obj', obj); // {a: 50, c: 10, b: 200}
+        console.log('First ' , first);
+        console.log('Second ', second); 
+
+    </script>
+</body>
+
+</html>

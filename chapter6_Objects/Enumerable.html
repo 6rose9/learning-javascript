@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enumberable</title>
+</head>
+
+<body>
+    <script>
+        for (let p in window) {
+            // console.log('Property => ', p, ', Value => ', window[p]);
+        }
+
+        let parent = {
+            name: "U Ba",
+            age: 45,
+            address: "YGN"
+        }
+
+        let obj = Object.create(parent);
+
+        obj.name = "Tun Tun"
+        obj.age = 15,
+
+            Object.defineProperty(obj, "secret", {
+                value: {
+                    girlfriend: {
+                        name: "Su Su",
+                        age: 14,
+                    }
+                },
+                enumerable: false,   // 👈 non-enumerable
+                writable: true,
+                configurable: true
+            });
+
+        console.log("Obj ", obj);
+
+        // returns an array of the names of the enumerable own properties of an object. 
+        // It does not include non-enumerable properties, inherited properties, or properties whose name is a Symbol
+        console.log("Keys ", Object.keys(obj));
+
+        //returns an array of the names of nonenumerable own properties as well, as long as their names are strings.
+        console.log("GetOwnProperty Name ", Object.getOwnPropertyNames(obj));
+
+        //return both enumerable and non-enumerable, and both string and Symbol
+        console.log("Reflect.ownKeys ", Reflect.ownKeys(obj));
+
+    </script>
+</body>
+
+</html>

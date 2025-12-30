@@ -118,7 +118,7 @@
 
         // key in obj
         console.log('city in obj2 =>', 'city' in obj2); // false
-        console.log('toString in obj2 =>', 'toString' in obj2); // true
+        console.log('toString in obj2 =>', 'toString' in obj2); // true ( in can't check it's own property or parent)
 
         // hasOwnProperty
         console.log('obj2 has its own property name? => ', obj2.hasOwnProperty('name')); // true : name is its own property 
@@ -128,6 +128,16 @@
         console.log('obj2.name isEnumerable ? => ', obj2.propertyIsEnumerable('name') ); // true
         console.log('obj2.toString isEnumerable ? =>,', obj2.propertyIsEnumerable('toString')); //false
 
+
+        // property shouldn't check with !== bcz it is often sufficient
+        let obj3 = {
+            x : undefined,
+        }
+
+        console.log("x in obj3? => ", 'x' in obj3); // true
+        console.log("x !== undefined? => ", obj3.x !== undefined); //false 
+        console.log("y !== undefined? => ", obj3.y !== undefined); //false
+        // !== give false for x and y but x property exists in obj3 
     </script>
 </body>
 
