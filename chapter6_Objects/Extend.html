@@ -13,7 +13,7 @@
         let target = { x: 1 }, source = { y: 2, z: 3 };
 
         // old school
-        for(let p in source){
+        for (let p in source) {
             target[p] = source[p];
         }
 
@@ -34,10 +34,16 @@
             a: 50
         }
 
+        // Method 1
         let obj = Object.assign(first, second, third); // r to l -> temp assign ( third -> second -> first -> obj)
-        console.log('Obj', obj); // {a: 50, c: 10, b: 200}
-        console.log('First ' , first);
-        console.log('Second ', second); 
+        // console.log('Obj', obj); // {a: 50, c: 10, b: 200}
+        // console.log('First ', first);
+        // console.log('Second ', second);
+
+        // Method 2
+        let obj2 = { ...second, ...third };
+        console.log('Obj2 ', obj2);
+
 
     </script>
 </body>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread</title>
+</head>
+
+<body>
+
+    <script>
+
+        let first = {
+            x: 10,
+            items: [100],
+        };
+
+        let second = {
+            y: 20,
+            items: [200],
+        };
+
+        let obj = { ...first, ...second };
+        
+        // Due to Live View of DevTools → will show updated items after ( mutation)
+        console.log('Obj ', obj); //[x:10, y:20, items:[200,50]]
+
+        // this is real state at the moment of logging
+        console.log('Obj ', JSON.parse(JSON.stringify(obj)));
+        // {
+        //     items:[200]
+        //     x:10
+        //     y:20
+        // }
+
+        obj.items.push(50);
+
+        console.log('First ', first.items); // [100]
+        console.log('Second ', second.items); // [200]
+        console.log('Obj items ', obj.items); //[200, 50]
+
+    </script>
+
+</body>
+
+</html>
