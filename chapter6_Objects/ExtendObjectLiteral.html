@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extend Object Literal</title>
+</head>
+<body>
+    <script>
+        // old school
+        let name = "Jhon";
+        let age = 45;
+
+        let obj = {
+            name: name,
+            age: age
+        };
+
+        console.log('Obj ', obj);
+
+        // extend object literal
+        let modernObj = {
+            name,
+            age,
+            "address_0": "Somewhere",
+            "address_1": "Another"
+        };
+
+        console.log('Extend object literal ', modernObj);
+
+        let fieldName = 'address_';
+        console.log(modernObj[fieldName+"0"]);
+        console.log(modernObj[fieldName+"1"]);
+
+        // console.log(modernObj.fieldName+"0"); //undefined0
+
+        const extension = Symbol("my extension symbol");
+
+        let obj2 = {
+            name, 
+            age, 
+            "address_0" : "Somewhere",
+            "address_1" : "Another",
+            [extension] : "Hello"
+        };
+
+        console.log("Obj[symbol] => ", obj2[extension]);
+
+    </script>
+</body>
+</html>

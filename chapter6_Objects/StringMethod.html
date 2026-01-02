@@ -16,12 +16,25 @@
             address: 'Yangon',
             items: [1, 2, 3],
 
+            toJSON() {
+                console.log('toJSON called');
+                return {
+                    name: this.name,
+                    age: this.age
+                }
+            },
+
             display() {
                 console.log('Name ', this.name);
                 console.log('Age ', this.age);
                 console.log('Address ', this.address);
             }
         };
+
+        let str = JSON.stringify(obj);
+
+        console.log(str); // only age and name
+
     </script>
 </body>
 
