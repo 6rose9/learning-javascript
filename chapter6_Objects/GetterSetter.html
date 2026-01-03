@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getter & Setter</title>
+</head>
+
+<body>
+    <script>
+
+        //------------------------------- Without getters/setters
+
+        const obj = {
+            name: "Zin Zin",
+            age: 26
+        }
+
+        obj.age = -100; // allowed
+        obj.age = "hello"; // allowed
+
+        console.log("obj ", obj);
+
+        //------------------------------- With getters/setters
+
+        const obj1 = {
+            name: "Zin Zin",
+            // for hidden convention, not private 
+            // data property name should not be 'age' bcz set age will overwrite
+            _age: 26,
+
+            set age(value) {
+                // control what values are allowed
+                // validation, not privacy
+                if (!Number.isInteger(value)) {
+                    throw new Error("Age must be integer");
+                }
+
+                if (value < 0) {
+                    throw new Error("Age must be positive");
+                }
+                this._age = value;
+            },
+
+            get age() {
+                return this._age;
+            }
+
+        }
+
+        console.log("Obj1 ", obj1);
+
+        obj1.age = "hello";
+
+        // before there is no get age() in obj1
+        // console.log("read & write by setter & getter: ", obj1.age) // undefined bcz no getter involved
+
+        // after
+        console.log("read & write by setter & getter: ", obj1.age) // 30
+
+        obj1._age = 30; // allowed
+        console.log("may read & write age directly: ", obj1._age); //30 bcz it's not private 
+
+    </script>
+</body>
+
+</html>
+
+<!-- 9: 7 -->

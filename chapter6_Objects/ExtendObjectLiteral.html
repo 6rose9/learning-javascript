@@ -13,7 +13,10 @@
 
         let obj = {
             name: name,
-            age: age
+            age: age,
+            display: function(){
+                console.log("This is old school way!");
+            }
         };
 
         console.log('Obj ', obj);
@@ -23,7 +26,10 @@
             name,
             age,
             "address_0": "Somewhere",
-            "address_1": "Another"
+            "address_1": "Another",
+            display(){
+                console.log("This is shorthand style")
+            }
         };
 
         console.log('Extend object literal ', modernObj);
