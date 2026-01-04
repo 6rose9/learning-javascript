@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Array</title>
+</head>
+
+<body>
+
+    <div class="">
+        <h3>Array</h3>
+        <p>Ordered a collection of values</p>
+    </div>
+
+    <script>
+
+        // let name0 = "Student";
+        // let name1 = "Student1";
+        // let name2 = "Student2";
+        // let name3 = "Student3";
+        // let name4 = "Student4";
+
+        let names = ['Student', 'Student1', 'Student2', 'Student3', 'Student4', 'Student5', 'Student6'];
+
+        // for loop
+        for (let i = 0; i < names.length; i++) {
+            console.log(names[i]);
+        }
+
+        // for of > get values
+        for (const name of names) {
+            // console.log("Name is ", name);
+        }
+
+        // set > not granted for order
+        let items = ['Banana', 'Apple', 'Mango', 'Orange'];
+        let set = new Set(items);
+        console.log('set', set);
+
+        console.log(names[10]); // undefined
+
+    </script>
+</body>
+
+</html>
