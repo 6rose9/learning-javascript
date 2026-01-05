@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread Operator</title>
+</head>
+
+<body>
+    <h3>What is shadow clone object?</h3>
+    <p>Creating a new object by copying only the top-level object, while nested objects are not copied and are shared by
+        reference.</p>
+    <ul>
+        <li>Only the top-level object is copied</li>
+        <li>Nested objects still point to the same memory</li>
+        <li>Changes to inner data affect both copies</li>
+    </ul>
+    <strong>### sperator opterator is shadow clone.</strong>
+
+    <hr>
+
+    <h3>What is Deep clone object?</h3>
+    <p>A deep clone makes a fully independent copy of the object.</p>
+    <ul>
+        <li>The object and all nested objects are copied</li>
+        <li>No shared references</li>
+        <li>Changes in one do not affect the other</li>
+    </ul>
+    <strong>### JSON.stringifying is deep clone.</strong>
+
+    <script>
+        let arr1 = [1, 3, 5, 7, 9];
+        let arr2 = [...arr1, 2, 4, 6];
+
+        // console.log('Arr2 ', arr2);
+
+        let obj = {
+            x: 10,
+        }
+
+        let arr3 = [obj];
+        let arr4 = [...arr3];
+
+        obj.x = 50;
+
+        console.log('Arr3[0]', arr3[0]); // obj
+        console.log('Arr4[0]', arr4[0]); //obj
+
+        // string is a character array
+        let strhello = "Hello";
+        let hello = [...strhello];
+        console.log(hello);
+
+
+    </script>
+</body>
+
+</html>
