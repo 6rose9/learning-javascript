@@ -8,8 +8,24 @@
 <body>
     <script>
         // create an empty array by using constructor
-        let arr = new Array();
+        let arr = new Array(); // let arr = [];
         console.log("Array is ", arr);
+
+        let arr2 = new Array(5);
+        console.log("Array size", arr2);
+
+        let arr3 = new Array(5, 10, 15);
+        console.log("Array 3 is", arr3);
+
+        let arr4 = Array.of();
+        console.log("Array of", arr4); // []
+
+        let arr5 = Array.of(5, 10);
+        console.log("Array of ", arr5); // [5, 10]
+
+        let arr6 = Array.apply(arr5);
+        console.log("Array 6 is ", arr6);
+
     </script>
 </body>
 </html>

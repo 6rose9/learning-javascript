@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Write</title>
+</head>
+<body>
+    <script>
+        let arr = [1, 2, 3, 4, 5, 9];
+        console.log('Arr[0] ', arr[0]); //read
+        
+        arr[0] = 100; //write
+        console.log('Arr ', arr);
+
+        console.log('Array length ', arr.length); // 5
+        
+        arr.length = 10;
+        console.log('Array length ', arr.length); // 10
+        console.log('9 in arr', 9 in arr); // is there value in index 9 of arr? => false
+        
+        arr[9] = 45;
+        console.log('9 in arr', 9 in arr); // true
+        console.log('8 in arr', 8 in arr); // false
+
+        arr.length = 3;
+        console.log('Reduce arr ', arr);
+
+    </script>
+</body>
+</html>
+
+<!-- 9: 50 -->
