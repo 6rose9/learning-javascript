@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Method</title>
+</head>
+
+<body>
+    <script>
+
+        let arr = [];
+        // --------------------------------------stack => first in last out / LIFO
+
+        arr.push(20);
+        arr.push(10);
+        console.log(arr.pop()); //10
+        arr[arr.length] = 70;
+        arr.push(5, 10, 15);
+        console.log(arr); // [20, 70, 5, 10, 15]
+
+        // --------------------------------------queue => first in first out / FIFO
+        
+        arr.unshift(85);
+        console.log(arr); //[85, 20, 70, 5, 10, 15]
+        console.log(arr.shift()); // 85
+    </script>
+</body>
+
+</html>

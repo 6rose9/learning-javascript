@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Array Constructor</title>
 </head>
+
 <body>
     <script>
         // create an empty array by using constructor
@@ -26,8 +28,14 @@
         let arr6 = Array.apply(arr5);
         console.log("Array 6 is ", arr6);
 
+        // Sparse Arrays
+        let sparseArray = [10, 20, 50, 64];
+        sparseArray.length = 10;
+        sparseArray[9] = 90;
+        console.log("Sparse Array", sparseArray); // [0:10, 1:20, 3:50, 4:64, 9:90]
     </script>
 </body>
+
 </html>
 
-<!-- 9: 37 -->
+<!-- 9: 1:01 -->
