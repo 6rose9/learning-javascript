@@ -11,8 +11,11 @@
     <script>
         let arr = [1, 2, 3];
 
+        // item is a copy of the value, does not affect the array
         for (let item of arr) {
+            if (item === 2) continue;
             console.log("Item is ", item);
+            item *= 2;
         }
 
         // for (const item of arr) {
@@ -20,15 +23,33 @@
         //     item *= 2; // Uncaught TypeError
         // }
 
-        console.log("Array after for...of ", arr);
+        console.log("Array after for...of (value * 2)", arr);
 
-        for (const [index, value] of arr.entries()) {
-            console.log(`Index ${index} Value ${value}`);
-            arr[index] = value * 2; // mutating the array, not reassigning index or value
+        // ---------------------------------------------------------------------
+        const arr1 = [1, 2, 3];
+        // want => index + mutate the array + stop the loop
+        // same behavior => for
+        for (const [index, value] of arr1.entries()) {
+            if(index === 2) break;
+            console.log(`Index ${index} > Value ${value}`);
+            arr1[index] = value * 2; // mutating the array, not reassigning index or value
             // value *= 2; // reassigning
         }
 
-        console.log("Array after entries ", arr);
+        console.log("Array after entries arr[index] = value * 2 => )", arr);
+
+        // ---------------------------------------------------------------------
+        const arr2 = [1, 2, 3];
+        // can mutate array via index
+        // cannot be stopped or broken, iterates fully
+        arr2.forEach((element, index, array) => {
+            console.log(`ForEach Index ${index} > Value ${element}`);
+            array[index] = element + 5;
+        });
+
+        arr2.forEach(item => {
+            console.log(item);
+        });
 
     </script>
 </body>
