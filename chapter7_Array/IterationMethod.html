@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iteration Method</title>
+</head>
+
+<body>
+    <script>
+        let arr1 = [1, 3, 6];
+
+        let arr2 = arr1.map(x => x / 2);
+
+        console.log("Original Array ", arr1); // [1, 3, 6]
+        console.log("After map ", arr2); // [0.5, 1.5, 3]
+
+        let evenList = arr1.filter(x => x % 2 === 0);
+        console.log("Even Numbers ", evenList);
+
+        // returns first matching element, otherwise undefined
+        let floatNumber = arr2.find(x => !Number.isInteger(x));
+        console.log("Float Number ", floatNumber); //0.5
+
+        let findNumber = arr2.find(x => Number.isFinite(x));
+        console.log("Find Number", findNumber);
+
+        let findIndex = arr1.findIndex(x => x > 3);
+        console.log("Index of x > 3 is", findIndex); //2
+
+        let allGtZero = arr1.every(x => x > 0); // true
+        console.log("Are all numbers greather than zero? ", allGtZero);
+
+        let arr3 = [-1, 2, 15];
+        allGtZero = arr3.every(x => x > 0); // false
+        console.log("Are all numbers greather than zero? ", allGtZero);
+
+        let someGtTen = arr3.some(x => x > 10); // true
+        console.log("Are all numbers greather than ten? ", someGtTen);
+
+        let sum = [1, 3, 5, 7, 9].reduce((initial, next) => initial + next);
+        console.log("Sum by using reduce ", sum);
+    </script>
+</body>
+
+</html>
