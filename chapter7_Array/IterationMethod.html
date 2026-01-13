@@ -11,14 +11,20 @@
     <script>
         let arr1 = [1, 3, 6];
 
+        // ------------------------------------------------- forEach
+        arr1.forEach(value => console.log(value));
+
+        // ---------------------------------------------------- map
         let arr2 = arr1.map(x => x / 2);
 
         console.log("Original Array ", arr1); // [1, 3, 6]
         console.log("After map ", arr2); // [0.5, 1.5, 3]
 
+        // -------------------------------------------------------filter
         let evenList = arr1.filter(x => x % 2 === 0);
         console.log("Even Numbers ", evenList);
 
+        // ------------------------------------------------------------ find
         // returns first matching element, otherwise undefined
         let floatNumber = arr2.find(x => !Number.isInteger(x));
         console.log("Float Number ", floatNumber); //0.5
@@ -26,9 +32,11 @@
         let findNumber = arr2.find(x => Number.isFinite(x));
         console.log("Find Number", findNumber);
 
+        // ------------------------------------------------------------ findIndex
         let findIndex = arr1.findIndex(x => x > 3);
         console.log("Index of x > 3 is", findIndex); //2
 
+        // ---------------------------------------------------------------- every
         let allGtZero = arr1.every(x => x > 0); // true
         console.log("Are all numbers greather than zero? ", allGtZero);
 
@@ -36,11 +44,53 @@
         allGtZero = arr3.every(x => x > 0); // false
         console.log("Are all numbers greather than zero? ", allGtZero);
 
+        // ----------------------------------------------------------------- some
         let someGtTen = arr3.some(x => x > 10); // true
         console.log("Are all numbers greather than ten? ", someGtTen);
 
+        // ----------------------------------------------------------------- reduce
         let sum = [1, 3, 5, 7, 9].reduce((initial, next) => initial + next);
         console.log("Sum by using reduce ", sum);
+
+        // ------------------------------------------------------------------- reduceRight
+        let sumRight = [1, 3, 5, 7, 9].reduceRight((initial, next) => initial + next);
+        console.log("Sum by using reduceRight ", sumRight);
+
+        //reduce and reduceRight are not the same when the operation is order-dependent, and exponentiation is order-dependent.
+        let exponent = [1, 2, 3].reduce((initial, next) => Math.pow(initial, next));
+        console.log("Exponent by reduce", exponent); // 1
+
+        let exponentRight = [1, 2, 3].reduceRight((initial, next) => Math.pow(initial, next));
+        console.log("Exponent by reduce", exponentRight); // 9
+
+        // ----------------------------------------------------------------- flat
+        let a = [1, [2, [3, [4]]]];
+        // structuralDepth = 4
+        // flatDepth = structuralDepth - 1 = 3
+        // console.log(a.flat(depth));
+
+        console.log(a.flat(1)); // [1, 2, [3, [4]]]
+        console.log(a.flat(3)); // [1, 2, 3, 4]
+
+        // Original array is not mutated
+        console.log(a); //[1, [2, [3, [4]]]]
+
+        //“Flatten everything, no matter how deep.”
+        console.log(a.flat(Infinity)); 
+
+        // ----------------------------------------------------------------- flatMap
+        let numbers = [1, 2, 3];
+
+        let mapNumbers = numbers.map(x => [x, x*2]);
+        console.log(mapNumbers);  // [[1,2],[2,4],[3,6]]
+        console.log(mapNumbers.flat());
+
+        let flatMapNumbers = numbers.map(x => [x, x/2]).flat();
+        console.log(flatMapNumbers);
+
+        flatMapNumbers = numbers.flatMap(x => [x, x % 2]);
+        console.log(flatMapNumbers);
+    
     </script>
 </body>
 
