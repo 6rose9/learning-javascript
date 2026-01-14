@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Of</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 3, 4, 5, 6, 7, 3, 9, 10, NaN];
+
+        let index = arr.indexOf('3');
+        console.log("Index of 3 is ", index); //-1 (there is no string 3 in array)
+
+        index = arr.lastIndexOf(3);
+        console.log("Last index of 3 is ", index); //7
+
+        index = arr.indexOf(NaN);
+        console.log("Index of NaN is ", index); // -1 ( indexOf can't find NaN because of NaN === NaN is return false )
+
+        // solution
+        index = arr.includes(NaN); // return boolean, not index
+        console.log("Index of NaN is ", index); // true
+
+        
+    </script>
+</body>
+
+</html>

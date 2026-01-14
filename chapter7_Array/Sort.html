@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort</title>
+</head>
+
+<body>
+    <script>
+
+        let arr = [1, 11, 2, 100, 205];
+        arr.sort(); // string sort
+        console.log("After default sort ", arr); // [1,100,11,2,205]
+
+        // comparator 0,1,-1 
+        arr.sort((a, b) => a - b);
+        console.log("After ascending sort", arr); // [1, 2, 11, 100, 205]
+
+    </script>
+</body>
+
+</html>
