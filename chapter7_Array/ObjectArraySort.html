@@ -1,0 +1,56 @@
+<html>
+<script>
+    let students = [
+        {
+            name: "Aye Aye Aung",
+            gender: "Female",
+            age: 26,
+        },
+        {
+            name: "Myo Ko Ko",
+            gender: "Male",
+            age: 15,
+        },
+        {
+            name: "Chit Su Naing",
+            gender: "Female",
+            age: 18,
+        },
+        {
+            name: "Tint Tint Thant",
+            gender: "Female",
+            age: 20,
+        },
+        {
+            name: "Lin Lin Tein",
+            gender: "Male",
+            age: 20,
+        },
+    ];
+
+    // negative or 0 → do NOT swap
+    // positive → swap
+
+    students.sort((studA, studB) => {
+        if (studA.age == studB.age) {
+            return studA.name.localeCompare(studB.name);
+        } else {
+            return studA.age - studB.age;
+        }
+    });
+
+    //Assignment does NOT copy arrays — it copies the reference
+    const sortedStudents = students;
+    console.log("Students sorted by age", sortedStudents);
+
+    //shallow clone
+    const copySortedStudents = [... students];
+    console.log("Clone Array", copySortedStudents);
+
+    const reverseSortStudents = students.reverse();
+
+    console.log("Students reverse sorted by age", reverseSortStudents);
+
+</script>
+
+</html>

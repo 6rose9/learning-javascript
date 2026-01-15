@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <title>shallow clone & deep clone</title>
+</head>
+
+<body>
+    <h3>Shallow Clone</h3>
+    <h5>original array ──▶ new array (different)</h5>
+    <h5>elements ──▶ same objects (shared)</h5>
+    <h5>Primitive values → copied</h5>
+    <h5>Nested objects/arrays → shared references</h5>
+    <div>
+        <h5>Common shallow clone methods</h5>
+        { ...obj }
+        Object.assign({}, obj)
+        [...array]
+        array.slice()
+    </div>
+
+    <hr>
+
+    <h3>Deep Clone</h3>
+    <h5>A deep clone copies everything, including nested objects and arrays.</h5>
+    <h5>No shared references</h5>
+    <h5>Changes do NOT affect the original</h5>
+
+</body>
+<script>
+    const original = [
+        { name: "Aye Aye", age: 25 },
+        { name: "Su Su", age: 22 },
+        "Yangon",
+    ];
+
+    const shallow = [...original]; // shallow clone
+    console.log("Shallow Clone", shallow);
+
+    // modify top level of origin
+    original[2] = "Mawlamyine";
+    console.log("Modified Original Array:", original[2]); // Mawlamyine
+    console.log("Affect shadow clone 'Yangon'?", shallow[2]); // Yangon (no)
+
+    // modify top level of shallow
+    shallow[2] = "Thaton";
+    console.log("Modify shallow clone:", shallow[2]); // Thaton
+    console.log("Affect origin 'Mawlamyine'?", original[2]); // Mawlamyine (no)
+
+    // modify reference
+    original[0].age = 28;
+    console.log("Modify original:", original[0].age); // 28
+    console.log("Affect shallow?", shallow[0].age); // 28
+
+    //------------------------------------------------------------------------- deep clone
+
+    const student = {
+        name: "Aye Aye",
+        scores: { math: 90, eng: 85 }
+    };
+
+    // old school way
+    const deep1 = JSON.parse(JSON.stringify(student));
+
+    // modern way
+    const deep2 = structuredClone(student);
+
+    deep1.scores.math = 50;
+    deep2.scores.eng = 40;
+
+    console.log("Original Math Scores ",student.scores); // {math: 90, eng: 85}
+
+</script>
+
+</html>

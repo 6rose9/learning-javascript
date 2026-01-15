@@ -35,7 +35,7 @@
         console.log(`Obj.items`, obj.items); // [1,2,3]
         console.log(`Obj2 items`, obj2.items); // [1,2,3,100]
 
-        // shadow clone
+        // shallow clone
         let clone = { ...obj };
         console.log('Clone Obj', clone);
         console.log('Origin Obj', obj);
@@ -47,7 +47,7 @@
         console.log('Origin Obj and  Deserialized Obj is same?');
         console.log(obj == obj2); // false
 
-        // Note:: (shadow clone, deep clone) store at difference memory address
+        // Note:: (shallow clone, deep clone) store at difference memory address
 
         // assign by reference
         let a = { a: 1 };
