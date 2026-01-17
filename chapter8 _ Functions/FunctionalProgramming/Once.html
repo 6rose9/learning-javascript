@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Once</title>
+</head>
+
+<body>
+    <h3>Imperative Programming</h3>
+    <div>
+        <p>You tell the computer how to do something, step by step.</p>
+        <strong>Key characteristics:</strong>
+        <ul>
+            <li>Uses statements that change program state</li>
+            <li>Relies on variables, assignments, and loops</li>
+            <li>Focuses on control flow (if, for, while)</li>
+        </ul>
+    </div>
+
+    <hr />
+
+    <h3>Functional Programming</h3>
+    <div>
+        <p>You tell the computer what to do, not how to do it.</p>
+        <strong>Key characteristics:</strong>
+        <ul>
+            <li>Uses functions as the main building blocks</li>
+            <li>Immutability (avoids changing state)</li>
+            <li>No side effects (same input → same output)</li>
+            <li>Uses expressions instead of statements</li>
+            <li>Relies on recursion instead of loops</li>
+        </ul>
+    </div>
+
+    <script>
+        //--------------------------------------------------Imperative Programming
+        let done = false;
+        function payment() {
+            if (!done) {
+                console.log('Processing Payment');
+                done = true;
+                console.log('Done');
+            }
+        }
+
+        payment();
+        payment();
+        payment();
+
+        let orderDone = false
+        function order() {
+            if (!orderDone) {
+                console.log('Processing Order');
+                orderDone = true;
+                console.log('Done');
+            }
+        }
+
+        order();
+        order();
+
+        //--------------------------------------------------Functional Programming
+        function once(fn) {
+            let done = false;
+            return function (...args) {
+                if (!done) {
+                    done = true;
+                    return fn(...args);
+                }
+            }; // outer function ENDS here
+            console.log("++++++++++++Done+++++++++++++"); // never execute this line
+        }
+
+        function orderFP() {
+            console.log("Processing order...");
+        }
+
+        function paymentFP() {
+            console.log("Processing payment...")
+        }
+
+        order = once(orderFP);
+        payment = once(paymentFP);
+
+        order();
+        order();
+
+        payment();
+        payment();
+    </script>
+</body>
+
+</html>
