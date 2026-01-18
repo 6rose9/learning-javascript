@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional Programming</title>
+</head>
+<body>
+    <script>
+        function order(orderId){
+            console.log('Order Placed ', orderId);
+        }
+
+        function payment(){
+            console.log('Processing Payment');
+        }
+
+        function once(fn, after){
+            let done = false;
+            return function(...args){
+                if(!done){
+                    done = true;
+                    return fn(...args);
+                }else{
+                    return after && after(...args);
+                }
+            }
+        }
+
+        let orderFn = once(order, ()=> console.log('Order already placed'));
+        let paymentFn = once(payment, ()=>console.log('Payment already processed'));
+
+        orderFn('id-122');
+        orderFn('id-122');
+
+        paymentFn();
+        paymentFn();
+    </script>
+</body>
+</html>
