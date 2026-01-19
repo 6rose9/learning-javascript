@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imperative & Declarative</title>
+</head>
+
+<body>
+    <h3>Imperative Paradigm</h3>
+    <span>How to do things</span>
+
+    <h3>Declarative Paradigm</h3>
+    <span>What to do?</span>
+    <p><strong>Functional Programming uses declarative</strong></p>
+
+    <script>
+        // ----------------------------------- Imperative => How to do step by step
+        let arr1 = [1, 2, 3, 4, 5];
+        let arr2 = [];
+
+        console.log("--- Imperative Paradigm ---")
+
+        for (const item of arr1) {
+            arr2.push(item * 5);
+        }
+
+        console.log('Arr2 ', arr2);
+
+        let arr4 = [];
+        for (const item of arr1) {
+            if (item % 2 === 0) {
+                arr4.push(item);
+            }
+        }
+        console.log('Even List ', arr4);
+
+        // ----------------------------------- Declarative => What to do 
+        console.log("--- Declarative Paradigm ---")
+        let arr3 = arr1.map(item => item * 5);
+        console.log('Arr3 ', arr3);
+
+        let arr5 = arr1.filter(item => item%2 === 0);
+        console.log('Even List ', arr5);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group with Reduce</title>
+</head>
+
+<body>
+    <script>
+        let students = [
+            {
+                name: 'Mya Mya',
+                gender: 'Female',
+                age: 20,
+            },
+            {
+                name: 'Aung Hla',
+                gender: 'Male',
+                age: 15,
+            },
+            {
+                name: 'Win Maung',
+                gender: 'Male',
+                age: 24
+            },
+            {
+                name: 'Tint Tint',
+                gender: 'Female',
+                age: 18
+            },
+            {
+                name: 'Mon Aung',
+                gender: 'Male',
+                age: 25,
+            },
+            {
+                name: 'Myo Aung',
+                gender: 'Male',
+                age: 27
+            },
+            {
+                name: 'Aye Aye',
+                gender: 'Female',
+                age: 28
+            },
+        ];
+
+        /*
+        group = {
+            'Female': [{},{}],
+            'Male': [{},{}]
+            }
+        */
+
+        let group = {};
+
+        // Imperative
+        for (const student of students) {
+            if (!group[student.gender]) {
+                group[student.gender] = [student];
+            } else {
+                group[student.gender].push(student);
+            }
+        }
+
+        console.log(group);
+
+        // Declarative
+        let group2 = students.reduce((group, student) => {
+            if (!group[student.gender]) {
+                return {
+                    ...group,
+                    [student.gender]: [student]
+                }
+            } else {
+                return {
+                    ...group,
+                    [student.gender]: [...group[student.gender], student]
+                }
+            }
+        }, {});
+        console.log('Group2 ', group2);
+
+    </script>
+</body>
+
+</html>
