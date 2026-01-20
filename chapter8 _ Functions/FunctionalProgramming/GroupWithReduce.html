@@ -14,36 +14,43 @@
                 name: 'Mya Mya',
                 gender: 'Female',
                 age: 20,
+                city: 'YGN',
             },
             {
                 name: 'Aung Hla',
                 gender: 'Male',
                 age: 15,
+                city: 'YGN',
             },
             {
                 name: 'Win Maung',
                 gender: 'Male',
-                age: 24
+                age: 24,
+                city: 'MDY',
             },
             {
                 name: 'Tint Tint',
                 gender: 'Female',
-                age: 18
+                age: 18,
+                city: 'MDY',
             },
             {
                 name: 'Mon Aung',
                 gender: 'Male',
                 age: 25,
+                city: 'MON',
             },
             {
                 name: 'Myo Aung',
                 gender: 'Male',
-                age: 27
+                age: 27,
+                city: 'MDY',
             },
             {
                 name: 'Aye Aye',
                 gender: 'Female',
-                age: 28
+                age: 28,
+                city: 'MON',
             },
         ];
 
@@ -70,7 +77,7 @@
         // Declarative
         let group2 = students.reduce((group, student) => {
             if (!group[student.gender]) {
-                return {
+                return { // object
                     ...group,
                     [student.gender]: [student]
                 }
@@ -80,8 +87,38 @@
                     [student.gender]: [...group[student.gender], student]
                 }
             }
-        }, {});
+        }, {}); // {} empty object will be initial(group)
         console.log('Group2 ', group2);
+
+        // pure function version ( no side effect)
+        function groupBy(arr, property) {
+            /*
+            reduce() is used to turn an array into a single value.
+            In this case, the students array into an object grouped by gender.
+            group = {
+                'YGN': [{},{}],
+                'MDY': [{},{}]
+            }
+            */
+            return arr.reduce((group, item) => {
+                let fieldName = item[property];
+                if (!group[fieldName]) {
+                    return {
+                        ...group,
+                        [fieldName]: [item]
+                    }
+                }
+                else {
+                    return {
+                        ...group,
+                        [fieldName]: [...group[fieldName], item]
+                    }
+                }
+            }, {});
+        }
+
+        console.log('Group by city ', groupBy(students, 'city'));
+        console.log('Group by gender ', groupBy(students, 'gender'));
 
     </script>
 </body>
