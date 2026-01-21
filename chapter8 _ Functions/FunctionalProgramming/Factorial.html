@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial</title>
+</head>
+
+<body>
+    <h3>Factorial</h3>
+    <ul style="list-style-type: none;">
+        <li>0! = 1</li>
+        <li>1! = 1</li>
+        <li>2! = 2 × 1 = 2</li>
+        <li>3! = 3 × 2 × 1 = 6</li>
+        <li>4! = 4 x 3 x 2 x 1 = 24</li>
+        <li>5! = 5 × 4 × 3 × 2 × 1 = 120</li>
+    </ul>
+    <strong>Formular: </strong>
+    <span>n! = n × (n − 1)!</span>
+
+    <h3>Where factorials are used</h3>
+    <ol>
+        <li>Probability</li>
+        <li>Algorithms & recursion</li>
+    </ol>
+
+    <script>
+        function range(start, end) {
+            let result = [];
+            for (let i = start; i <= end; i++) {
+                result.push(i);
+            }
+            return result;
+        }
+        // console.log('Range: ', range(1,5));  
+
+        for (const item of range(0, 5)) {
+            console.log('Item ', item);
+        }
+
+        function factorial(n){
+            return range(1, n).reduce((a,b) => a * b, 1);
+        }
+
+        console.log('Factorial 4! =', factorial(4)); // 24
+        console.log('Factorial 5! =', factorial(5)); // 120
+
+    </script>
+</body>
+
+</html>
