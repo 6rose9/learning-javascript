@@ -1,0 +1,50 @@
+<html>
+<script>
+
+    /*
+        Imperative paradigm
+        Pure Function (same input, output)
+        No Side Effect
+    */
+    function factorial(n) {
+        let result = 1;
+        for (let i = 1; i <= n; i++) {
+            result = result * i;
+        }
+
+        return result;
+    }
+
+    console.log('5! = ', factorial(5));
+    console.log('5! = ', factorial(5));
+
+    /*
+        {
+            5:120,
+            4:24
+        }
+    */
+
+    function memonize(fn) {
+        let cache = {};
+        return function (x) {
+            if (cache[x]) {
+                return cache[x];
+            } else {
+                console.log("Loading...")
+                let result = fn(x);
+                cache[x] = result;
+                return result;
+            }
+        }
+    }
+
+    let cacheFac = memonize(factorial);
+   
+    console.log('3! = ', cacheFac(3));
+    console.log('3! = ', cacheFac(3));
+    console.log('15! = ', cacheFac(15));
+
+</script>
+
+</html>

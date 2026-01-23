@@ -1,0 +1,31 @@
+<html>
+<script>
+    console.log('parseInt 10', parseInt('10')); // 10
+    console.log('parseInt 10,2 ', parseInt('10', 2)); //2
+    console.log(parseInt('11', 2)) // 3 (string 11 is based 2 so result is 3)
+
+    let arr = ["123", "45", "67"];
+    let numbers = arr.map(parseInt);
+    console.log('Number ', numbers); // [123, NaN, NaN] 
+
+    /*
+    map((value,index, array)=>())
+    parseInt(string, base) 
+
+    parseInt(123,0)
+    parseInt(45,1) // NaN because the radix must be between 2 and 36
+    parseInt(67,2) // NaN because base 2 has only 0 and 1, 67 is not base 2
+    */
+
+    function unary(fn) {
+        return function (x) {
+            return fn(x);
+        }
+    }
+
+    numbers = arr.map(unary(parseInt));
+    console.log('Number ', numbers);
+    
+</script>
+
+</html>
