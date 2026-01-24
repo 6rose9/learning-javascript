@@ -1,0 +1,43 @@
+<html>
+
+<body>
+    <script>
+        /*
+            x
+        [funA, funB, funC]
+        */
+
+        function pipe(...funs) {
+            return function (x) {
+                return funs.reduce((x, fun) => fun(x), x);
+            }
+        }
+
+        let incOne = (x) => x + 1;
+        let double = (x) => x * 2;
+        let minusFive = (x) => x - 5;
+
+        let calculateFun = pipe(incOne, minusFive, double, console.log);
+        calculateFun(3); // -2
+        calculateFun(5); // 2
+        calculateFun(8); // 8
+
+        function appendHi(str) {
+            return str + ' Hi';
+        }
+
+        function toUpper(str) {
+            return str.toUpperCase();
+        }
+
+        function getLenght(str) {
+            return str.length;
+        }
+
+        let errorFun = pipe(appendHi, getLenght, toUpper);
+        console.log(errorFun('Hey')); //Uncaught TypeError:
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muti compose</title>
+</head>
+
+<body>
+    <script>
+        /*
+            x
+        [funA, funB, funC]
+        */
+
+        function compose(...funs) {
+            return function (x) {
+                return funs.reduceRight((x, fun) => fun(x), x);
+            }
+        }
+
+        function appendHi(str) {
+            return str + ' Hi';
+        }
+
+        function toUpper(str) {
+            return str.toUpperCase();
+        }
+
+        let newFun2 = compose(appendHi, toUpper);
+        console.log('newFunc2 ', newFun2('hello'));
+
+        let incOne = (x) => x+1;
+        let double = (x) => x*2;
+        let minusFive = (x) => x-5;
+
+        let calculateFun = compose(console.log, incOne, minusFive, double);
+        calculateFun(5); // 6
+    </script>
+</body>
+
+</html>

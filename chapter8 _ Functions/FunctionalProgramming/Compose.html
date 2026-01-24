@@ -1,0 +1,38 @@
+<html>
+
+<body>
+    <h3>compose & pipe</h3>
+    <ul>
+        <li>single input , single output</li>
+        <li>type match(input, output)</li>
+    </ul>
+</body>
+<script>
+    function appendHi(str) {
+        return str + ' Hi';
+    }
+
+    function toUpper(str) {
+        return str.toUpperCase();
+    }
+
+    // Imperative Programming
+    function newFun(x) {
+        return appendHi(toUpper(x));
+    }
+
+    console.log('newFunc1: ', newFun('hello'));
+
+    // Functional Programming
+    function compose(funA, funB) {
+        return function (x) {
+            return funA(funB(x));
+        }
+    }
+
+    let newFunc2 = compose(appendHi, toUpper);
+    console.log('newFunc2: ', newFunc2('hello'));
+
+</script>
+
+</html>
