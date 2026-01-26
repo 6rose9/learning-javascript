@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top K Frequent</title>
+</head>
+
+<body>
+    <div>
+        Programming Paradigms
+        <ul style="list-style: none;">
+            <li style="margin-bottom: 15px;">
+                ├─ Imperative (HOW to do it)
+                <ul style="list-style: none;">
+                    <li>├─ Procedural</li>
+                    <li>└─ Object-Oriented (OOP)</li>
+                </ul>
+            </li>
+            <li>
+                └─ Declarative (WHAT to do)
+                <ul style="list-style: none;">
+                    <li>├─ Functional</li>
+                    <li>└─ Logic (e.g., Prolog)</li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+    <script>
+        let nums = [1, 1, 2, 2, 3, 2, 3, 4, 3, 3,3,3,3,];
+        let k = 2;
+
+        /*
+            frequency = {
+                1: 2,
+                2: 3,
+                3: 7,
+                4: 1
+            }
+        */
+
+        // imperative
+        let frequency = {};
+        for (const item of nums) {
+            if (frequency[item]) {
+                frequency[item]++;
+            }
+            else {
+                frequency[item] = 1;
+            }
+        }
+
+        console.log(frequency);
+        const arr = Object.entries(frequency);
+        // console.log(arr);
+
+        arr.sort((a,b)=>{
+            return b[1] - a[1];
+        });
+
+        console.log(arr);
+
+        let index = arr.map(a => a[0]);
+        console.log(index);
+
+        index.length = k;
+        console.log('Frequent k ', index);
+    </script>
+</body>
+
+</html>

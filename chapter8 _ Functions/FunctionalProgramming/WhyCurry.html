@@ -65,6 +65,14 @@
         let newFun = R.pipe(inc1, add(10));
         console.log('Result = ', newFun(2));
 
+        function multi(a, b) {
+            return a * b;
+        }
+
+        let curriedMulti = R.curry(multi);
+        console.log(curriedMulti);
+        console.log('R curried multi ', curriedMulti(2)(3));
+
     </script>
 </body>
 
