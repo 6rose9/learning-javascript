@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tok frequency Functional Programming</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+    <script>
+        function getFrequency(arr) {
+            let frequency = {};
+            for (const item of arr) {
+                if (frequency[item]) {
+                    frequency[item]++;
+                }
+                else {
+                    frequency[item] = 1;
+                }
+            }
+
+            return frequency;
+        }
+
+        function toArray(frequency) {
+            return Object.entries(frequency);
+        }
+
+        function sort(arr) {
+            return arr.sort((a, b) => {
+                return b[1] - a[1];
+            });
+        }
+
+        function extractIndex(arr) {
+            // return  Object.keys(arr); // string array
+            return arr.map(a => a[0]);
+        }
+
+        function topK(arr) {
+            return function (k) {
+                arr.length = 2;
+                return arr;
+            }
+        }
+
+        let nums = [1, 1, 2, 2, 3, 2, 3, 4, 3, 3, 3, 3, 3,];
+        let k = 2;
+
+        let frequency = getFrequency(nums);
+        frequency = toArray(frequency);
+        frequency = sort(frequency);
+        frequency = extractIndex(frequency);
+        frequency = topK(frequency);
+        console.log('Frequency k', frequency(2));
+
+        const topKR = k =>
+            R.pipe(
+                R.countBy(String),                 // { "1": 2, "2": 3, "3": 6, "4": 1 }
+                R.toPairs,                         // [["1",2],["2",3],["3",6],["4",1]]
+                R.sort(R.descend(R.nth(1))),       // sort by frequency desc
+                R.map(R.head),                     // ["3","2","1","4"]
+                R.take(k)                          // take top k
+            );
+
+        console.log('Frequency k', topKR(k)(nums)); // ["3", "2"]
+
+    </script>
+</body>
+
+</html>
