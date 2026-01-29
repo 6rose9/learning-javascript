@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functor</title>
+</head>
+
+<body>
+    <h3>Functor</h3>
+    <div>box => map -> function -> return copy array</div>
+    <script>
+        let counter = 0;
+        counter++;
+        console.log('Counter ', counter);
+
+        let arr = [1, 2, 3];
+        console.log('Map ', arr.map(x => x * 2));
+
+        const Container = (x) => ({
+            map: (fn) => Container(fn(x)),
+            valueOf: () => x
+        });
+
+        Container.of = Container; // static method that lives on the function/class itself (same as Container() == Container.of)
+        // console.log(Container.of());
+
+        let inc = (x) => x + 1;
+        let counter1 = Container.of(10);
+        console.log('Counter1 ', counter1);
+
+        let counter2 = counter1.map(inc);
+        console.log('Counter2 ', counter2.valueOf());
+
+        let counter3 = Container.of(3)
+            .map(x => x * 2)
+            .map(x => x + 1);
+
+        console.log('Counter3 ', counter3.valueOf());
+
+    </script>
+</body>
+
+</html>

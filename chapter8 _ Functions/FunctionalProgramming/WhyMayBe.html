@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why may be?</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+    <script>
+        const Container = (x) => ({
+            map: (fn) => Container(fn(x)),
+            valueOf: () => x
+        });
+
+        function toUpper(str) {
+            return str.toUpperCase();
+        }
+
+        function appendHi(str) {
+            return str + " hi";
+        }
+
+        let newFun = R.pipe(toUpper, appendHi);
+        console.log('ToUpper ', newFun('input'));
+        // console.log('ToUpper ', newFun(undefined));
+
+        
+    </script>
+</body>
+
+</html>
