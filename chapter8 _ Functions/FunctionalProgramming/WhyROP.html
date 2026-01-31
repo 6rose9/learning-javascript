@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why ROP</title>
+</head>
+
+<body>
+    <h3>try catch limition for fp</h3>
+    <div>
+        <strong>Functional Programming:</strong>
+        <p>
+            A function call can be replaced by its result without changing program behavior(referential transparency).
+            Functional programming is all about composition.
+        </p>
+    </div>
+
+    <div>
+        <strong>try catch / exception</strong>
+        <ul style="list-style-type: style none;">
+            <li>return a value</li>
+            <li>throw an exception (side effects)</li>
+            <li>be caught somewhere else entirely</li>
+        </ul>
+        <p>Not predictable just from its inputs, which breaks a key FP rule</p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+    <script>
+        function div(a, b) {
+            if (isNaN(a) || isNaN(b)) {
+                throw new Error('A or B is NaN')
+            }
+            else {
+                return a / b;
+            }
+        }
+
+        const inc = (x) => x + 1;
+
+        let result;
+        try {
+            result = div(NaN, 3);
+        } catch (error) {
+            result = 0
+        }
+
+        result = inc(result);
+        console.log('Result ', result);
+
+    </script>
+</body>
+
+</html>
