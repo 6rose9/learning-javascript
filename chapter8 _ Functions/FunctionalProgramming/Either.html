@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Either</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.31.3/ramda.min.js"></script>
+    <script>
+        // Either = Left | Right
+        const Left = (x) => ({
+            map(fn) {
+                return Left.of(fn(x));
+            },
+            matchWith({ left, right }) {
+                return left(x);
+            },
+            valueOf: () => x
+        });
+        Left.of = Left;
+
+        //-----------------------------
+
+        const Right = (x) => ({
+            map(fn) {
+                return Right.of(fn(x));
+            },
+            matchWith({ left, right }) {
+                return right(x);
+            },
+            valueOf: () => x
+        });
+        Right.of = Right;
+
+        //------------------------------
+
+        // test
+
+        function division(a, b) {
+            if (isNaN(a) || isNaN(b)) {
+                return Left.of('a or b is NaN ')
+            } else {
+                return Right.of(a / b);
+            }
+        }
+
+        const inc = (x) => x + 1;
+
+        const div = division(10, 2);
+        console.log(div); //{map: ƒ, valueOf: ƒ}
+
+        const incDiv = div.map(inc);
+        console.log(incDiv); //{map: ƒ, valueOf: ƒ}
+
+        incDiv.map(console.log);
+
+        division(10, NaN)
+            .map(inc)
+            .map(console.log);
+
+        division(4, NaN)
+            .map(inc)
+            .matchWith({
+                right: x => console.log('Success: ', x),
+                left: error => console.log('Error: ', error)
+            });
+
+    </script>
+</body>
+
+</html>
