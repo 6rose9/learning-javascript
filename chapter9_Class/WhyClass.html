@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+
+<body>
+    <script>
+        // obj literal
+        let obj = {
+            name: "Jhon",
+            age: 30,
+            display() {
+                console.log('Name: ', this.name, 'Age: ', this.age);
+            }
+        }
+        obj.display();
+
+        obj.name = "Su Su";
+        obj.age = 20;
+        obj.display();
+
+        let shoppingCart = {
+            items: [],
+            addItem(item) {
+                this.items.push(item);
+                console.log('Item added');
+            },
+            displayItems() {
+                for (const item of this.items) {
+                    console.log(`Name ${item.name}, Price ${item.price}, Quality ${item.qty}`);
+                }
+            }
+        }
+        shoppingCart.addItem({
+            name: "Apple",
+            price: 10,
+            qty: 30,
+        });
+
+        shoppingCart.displayItems();
+
+        shoppingCart.addItem({
+            name: "Orange",
+            price: 7,
+            qty: 23,
+        });
+
+        console.log(shoppingCart);
+    </script>
+</body>
+
+</html>

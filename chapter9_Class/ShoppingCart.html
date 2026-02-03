@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+
+<body>
+    <script>
+        class ShoppingCart {
+            items = [];
+            addItem(item) {
+                this.items.push(item);
+                console.log('Item added');
+            }
+
+            displayItems() {
+                for (const item of this.items) {
+                    console.log(`Name ${item.name} Price ${item.price} Quantity ${item.qty}`)
+                }
+            }
+        }
+
+        let s1 = new ShoppingCart();
+        s1.addItem({
+            name: "Orange",
+            price: 7,
+            qty: 23,
+        });
+
+        console.log(s1);
+
+    </script>
+</body>
+
+</html>
