@@ -8,7 +8,23 @@
 </head>
 
 <body>
+    <div>
+        <p>class -> factory</p>
+        <p>object -> product</p>
+    </div>
     <script>
+        class Item {
+            constructor(name, price, qty) {
+                this.name = name;
+                this.price = price;
+                this.qty = qty;
+            }
+
+            toString() {
+                return (`${this.name.padEnd(20)} ${this.price + "". padEnd(10)} ${this.qty + "" . padEnd(10)}`)
+            }
+        }
+
         class ShoppingCart {
             items = [];
             addItem(item) {
@@ -18,7 +34,7 @@
 
             displayItems() {
                 for (const item of this.items) {
-                    console.log(`Name ${item.name} Price ${item.price} Quantity ${item.qty}`)
+                    console.log(item.toString())
                 }
             }
         }
@@ -31,6 +47,23 @@
         });
 
         console.log(s1);
+
+        let s2 = new ShoppingCart();
+        s2.addItem({
+            name: "Apple",
+            price: 5,
+            qty: 13,
+        });
+        s2.addItem({
+            name: "mango",
+            price: 10,
+            qty: 10,
+        });
+
+        let s3 = new ShoppingCart();
+        s3.addItem(new Item('Pencil', 20, 4));
+        s3.addItem(new Item("Ruler", 25, 6));
+        s3.displayItems();
 
     </script>
 </body>
