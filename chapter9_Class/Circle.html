@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor with getter</title>
+</head>
+<body>
+    <h3>
+        Use class when multiple objects need
+    </h3>
+    <script>
+        class Circle{
+            constructor(radious){
+                this.radious = radious;
+            }
+
+            get area(){
+                return Math.round(this.radious * this.radious * Math.PI);
+            }
+        }
+
+        let c1 = new Circle(3);
+        let c2 = new Circle(4);
+        console.log('C1 ', c1.area);
+        console.log('C2 ', c2.area);
+
+        console.log('c1 instanceof Circle ', c1 instanceof Circle);
+        console.log('c1 instanceof Object', c1 instanceof Object);
+        console.log('c1 instanceof Array ', c1 instanceof Array);
+    </script>
+</body>
+</html>
