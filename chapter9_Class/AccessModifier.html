@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Modifier</title>
+</head>
+
+<body>
+    <script>
+        class Human {
+            name = '';
+            #age = 0;
+            constructor(name, age) {
+                this.name = name;
+                this.#age = age;
+            }
+
+            get age() {
+                return this.#age;
+            }
+
+            set age(newValue) {
+                if (newValue > 0 && newValue <= 120) {
+                    this.#age = newValue;
+                }
+            }
+        }
+
+        let h1 = new Human('John', 23);
+        // h1.age = 100;
+        // console.log('h1 ', h1); // {name: 'John', age: 100, #age: 23}
+
+        h1.age = 100;
+        console.log('h1 ', h1.age);
+
+        Human.prototype.display = function () {
+            console.log(`Name ${this.name} Age ${this.age}`);
+        }
+
+        h1.display();
+
+    </script>
+</body>
+
+</html>

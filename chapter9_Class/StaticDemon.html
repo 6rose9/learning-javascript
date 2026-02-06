@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static</title>
+</head>
+<body>
+    <script>
+        class MyMath{
+            static min(...args){
+                let min = args[0];
+                for(const arg of args){
+                    if(arg < min){
+                        min = arg;
+                    }
+                }
+                return min;
+            }
+        }
+        console.log('Math.min ', Math.min(1, -26));
+        console.log('MyMath.min ', MyMath.min(1, -26));
+    </script>
+</body>
+</html>
