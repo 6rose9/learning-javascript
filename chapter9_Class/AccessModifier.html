@@ -41,6 +41,14 @@
 
         h1.display();
 
+        console.log('hello.toUpperCase', 'hello'.toUpperCase());
+
+        String.prototype.isEmpty = function(){
+            return this.length === 0;
+        }
+
+        console.log("''.isEmpty", ''.isEmpty());
+
     </script>
 </body>
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance</title>
+</head>
+
+<body>
+    <script>
+        class Human {
+            name = '';
+            #age = 0;
+            constructor(name, age) {
+                this.name = name;
+                this.#age = age;
+            }
+
+            get age() {
+                return this.#age;
+            }
+
+            set age(newValue) {
+                if (newValue > 0 && newValue <= 120) {
+                    this.#age = newValue;
+                }
+            }
+
+            work(){
+                console.log(`Human ${this.name} is working`);
+            }
+
+            eat(){
+                console.log(`Human ${this.name} is eating`);
+            }
+        }
+
+        class Teacher extends Human{
+            subject = '';
+            constructor(name, age, subject){
+                super(name, age);
+                this.subject = subject;
+                console.log('Teacher constructor');
+            }
+
+            work(){
+                super.work();
+                console.log(`I can also teach ${this.subject}`);
+            }
+        }
+
+        let t1 = new Teacher('Jhon', 30, 'Maths');
+        t1.eat();
+        t1.work();
+        console.log('t1 ', t1);
+
+        console.log('t1 instanceof Teacher ', t1 instanceof Teacher);
+        console.log('t1 instanceof Human ', t1 instanceof Human);
+        console.log('t1 instanceof Object ', t1 instanceof Object);
+
+    </script>
+</body>
+
+</html>
