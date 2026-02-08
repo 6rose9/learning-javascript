@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESM</title>
+</head>
+
+<body>
+    <h3>Module System</h3>
+    <ol>
+        <li>ESM</li>
+        <li>CommonJS</li>
+    </ol>
+
+    <div style="display: flex;margin-bottom: 20px;">
+        <strong>JavaScript engine</strong>
+        <div>
+            <span> → understands core JavaScript and ESM syntax (i.e., import / export).</span>
+            <p> → V8/SpiderMonkey handle ESM parsing & execution</p>
+        </div>
+    </div>
+
+    <div style="display: flex;margin-bottom: 20px;">
+        <strong>Browser</strong>
+        <div>
+            <span>
+                → embeds a JavaScript engine (like V8 in Chrome, SpiderMonkey in Firefox).
+            </span>
+            <p>
+                → provides runtime environment (including Web APIs), and the JS engine uses it while executing your
+                code.
+            </p>
+
+            <p>
+                → handles the things the engine can’t do on its own
+            <ul>
+                <li>Resolving module paths from URLs</li>
+                <li>Exposing document and window</li>
+                <li>Scheduling asynchronous tasks via the event loop</li>
+            </ul>
+            </p>
+            <p>
+                → supports ESM natively
+            </p>
+            <p>
+                → cannot use CommonJS directly; you need a bundler like Webpack or Vite.
+            </p>
+        </div>
+    </div>
+
+    <div style="display: flex;">
+        <strong>Node.js</strong>
+        <div>
+            → provides a JavaScript runtime environment (embeds V8).
+            <p>
+                → supports both ESM and CommonJS modules.
+            </p>
+            <p>
+                → provides extra APIs so JS code can do things a browser can’t do:
+            <ul>
+                <li>File System (fs)</li>
+                <li>Network (http, https, net, tls)</li>
+                <li>Path, URL, OS modules</li>
+                <li>Timers (setTimeout, setInterval)</li>
+                <li>Process & Environment</li>
+                <li>Module system</li>
+            </ul>
+            </p>
+            <p>
+                → includes an event loop (from libuv library) to handle async operations: timers, I/O, network requests.
+                V8 executes JS code, but the event loop orchestrates callbacks and asynchronous tasks.
+            </p>
+            <p>
+                → does not have Web APIs like window, document, or fetch by default.
+            </p>
+        </div>
+    </div>
+
+    <script type="module" src="./UseESModule.js"></script>
+</body>
+
+</html>
