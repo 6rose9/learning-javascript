@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set</title>
+</head>
+
+<body>
+    <div>
+        <p><strong>Set</strong> is API</p>
+    </div>
+    <script>
+        let set = new Set([1, 2, 3, 1, 1, 2, 3]);
+        console.log('set ', set); // Set(3) {1, 2, 3}
+        console.log('set.size ', set.size); // 3
+
+        set.add(4);
+        console.log('set ', set); //Set(4) {1, 2, 3, 4}
+        console.log('set.size ', set.size); //4
+
+        set.delete(1);
+        console.log('after delete set ', set); //Set(3) {2, 3, 4}
+
+        console.log('has(2) ', set.has(2)); // true
+        console.log('has(1) ', set.has(1)); // false
+
+        set.clear();
+        console.log('after clear set ', set); // Set(0) {size: 0}
+
+        class MySet {
+            unique = [];
+            constructor(arr) {
+                for (const item of arr) {
+                    if (this.unique.indexOf(item) === -1) {
+                        this.unique.push(item);
+                    }
+                }
+            };
+
+            get size() {
+                return this.unique.length;
+            }
+
+            toString() {
+                return `{ ${this.unique.join(',')}}`;
+            }
+
+            add(item) {
+                if (this.unique.indexOf(item) === -1) {
+                    this.unique.push(item);
+                }
+            }
+        }
+
+        let myset = new MySet([1, 2, 3, 4, 3, 2, 1]);
+        console.log('Custom Set ', set);
+        console.log('Custom Set Size ', myset.size);
+        console.log('Custom Set', myset.toString());
+        
+    </script>
+</body>
+
+</html>
