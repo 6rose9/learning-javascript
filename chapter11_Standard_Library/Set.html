@@ -52,13 +52,37 @@
                     this.unique.push(item);
                 }
             }
+
+            delete(item) {
+                const index = this.unique.indexOf(item);
+                if (index != -1) {
+                    this.unique.splice(index, 1);
+                }
+            }
+
+            has(item) {
+                return this.unique.indexOf(item) !== -1;
+            }
+
+            clear() {
+                this.unique = [];
+            }
         }
 
         let myset = new MySet([1, 2, 3, 4, 3, 2, 1]);
         console.log('Custom Set ', set);
         console.log('Custom Set Size ', myset.size);
         console.log('Custom Set', myset.toString());
-        
+
+        myset.add(5);
+        console.log('Add to custom set ', myset);
+        console.log('Size ', myset.size);
+        console.log('is there 5?', myset.has(5));
+
+        console.log('Clear custom set');
+        myset.clear();
+        console.log("After clear ", myset);
+
     </script>
 </body>
 
