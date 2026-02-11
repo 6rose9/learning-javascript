@@ -18,6 +18,8 @@
         let map = new Map([
             ['id-1', 'Jhon'],
             ['id-2', 'Aung Aung'],
+            ['id-4', 'Su Su'],
+            ['id-6', 'Aye Aye'],
         ]);
 
         console.log('size ', map.size);
@@ -40,11 +42,15 @@
         // map.clear();
         // console.log('map' , map);
 
-        console.log('Keys ', map.keys()); 
+        console.log('Keys ', map.keys());
         console.log('Values ', map.values());
         console.log('Entries ', map.entries());
 
         // note: return MapIterator; not array
+
+        map.forEach((value, key) => {
+            console.log('Value ', value, 'Key ', key);
+        });
 
     </script>
 </body>
