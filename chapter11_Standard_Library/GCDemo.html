@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garbage Collection</title>
+</head>
+
+<body>
+    <button type="button" id="btnAllocate">
+        Allocate
+    </button>
+
+    <button type="button" id="btnDeAllocate">
+        DeAllocate
+    </button>
+
+    <script>
+        let arr1, arr2; // global variable
+        function allocate() {
+            arr1 = new Array(100_000);
+            arr2 = arr2;
+            console.log('allocated');
+        }
+
+        document.getElementById("btnAllocate")
+            .addEventListener('click', () => {
+                allocate();
+            });
+
+        document.getElementById("btnDeAllocate")
+            .addEventListener('click', () => {
+                arr1 = null;
+                // arr2 = null;
+            });
+    </script>
+</body>
+
+</html>
