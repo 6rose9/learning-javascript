@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Regular Expression</title>
+</head>
+
+<body>
+    <script>
+        function isAZ(char) {
+            let code = char.charCodeAt(0);
+            return code >= 65 && code <= 90;
+        }
+
+        function isaz(char) {
+            let code = char.charCodeAt(0);
+            return code >= 97 && code <= 122;
+        }
+
+        function isLetter(str) {
+            return isAZ(str[0]) || isaz(str[0]);
+        }
+
+        function isDigit(char) {
+            let code = char.charCodeAt(0);
+            return code >= 48 && code <= 57;
+        }
+
+        function isValid(str) {
+            let firstIsLetter = isLetter(str);
+            let letterOrDigit = true;
+            for(let i=1; i< str.lenght; i++){
+                let ch = str[i];
+                letterOrDigit &&= (isLetter(ch) || isDigit(ch));
+            }
+
+            return firstIsLetter && letterOrDigit;
+        }
+
+
+    </script>
+</body>
+
+</html>
