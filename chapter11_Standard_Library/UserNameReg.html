@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reg Pattern</title>
+</head>
+
+<body>
+    <script>
+        // username start with letter, can follow number/letter
+        // a123, ab12, abcd, a23b, ...
+
+        let pattern = /^[a-zA-Z]([a-zA-Z]|[0-9])*$/; // notice space 
+        console.log(pattern);
+        
+        console.log('isValid apple ', pattern.test('apple'));
+        console.log('isValid Apple ', pattern.test('Apple'));
+        console.log('isValid A234ajf', pattern.test('A234ajf'));
+        console.log('isValid fds@43 ', pattern.test('fds@43'));
+    </script>
+</body>
+
+</html>

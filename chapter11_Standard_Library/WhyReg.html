@@ -29,17 +29,16 @@
         }
 
         function isValid(str) {
-            let firstIsLetter = isLetter(str);
-            let letterOrDigit = true;
-            for(let i=1; i< str.lenght; i++){
-                let ch = str[i];
-                letterOrDigit &&= (isLetter(ch) || isDigit(ch));
-            }
-
+            const firstIsLetter = isLetter(str);
+            const letterOrDigit = [...str].every(ch => isLetter(ch) || isDigit(ch));
             return firstIsLetter && letterOrDigit;
         }
 
-
+        console.log('isValid apple ', isValid('apple'));
+        console.log('isValid Apple ', isValid('Apple'));
+        console.log('isValid A234ajf', isValid('A234ajf'));
+        console.log('isValid fds@43 ', isValid('fds@43'));
+        
     </script>
 </body>
 
