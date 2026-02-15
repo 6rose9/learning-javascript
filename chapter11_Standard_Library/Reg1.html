@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regular Expression</title>
 </head>
+
 <body>
     <script>
         let pattern = /^A/; // start with A and then anything
@@ -14,6 +16,20 @@
 
         pattern = /^Java/;
         console.log(`${pattern} Javascript`, pattern.test('Javascript'));
+
+        pattern = /script$/; // start with anything and end script
+        console.log(`${pattern} Javascript`, pattern.test('Javascript'));
+
+        pattern = /[abc]/; // include a or b or c?
+        console.log(`${pattern} area`, pattern.test('area'));
+        console.log(`${pattern} bac`, pattern.test('bac'));
+        console.log(`${pattern} cat`, pattern.test('cat'));
+
+        pattern = /[^abc]/; // not include a or b or c?
+        console.log(`${pattern} area`, pattern.test('area')); // ture because r doesn't include a,b,c
+        console.log(`${pattern} bac`, pattern.test('bac'));
+        console.log(`${pattern} cat`, pattern.test('cat'));
     </script>
 </body>
+
 </html>
