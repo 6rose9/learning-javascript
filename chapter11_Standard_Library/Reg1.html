@@ -29,6 +29,36 @@
         console.log(`${pattern} area`, pattern.test('area')); // ture because r doesn't include a,b,c
         console.log(`${pattern} bac`, pattern.test('bac'));
         console.log(`${pattern} cat`, pattern.test('cat'));
+
+        pattern = /.$/; // any character except newline or another unicode line terminator
+        console.log(`${pattern} hello`, pattern.test('hello')); // true
+        console.log(`${pattern} hello \n`, pattern.test('hello\n'));
+
+        pattern = /^\w/; // start with any ASCII word character a-zA-Z0-9_
+        console.log(`${pattern} hello`, pattern.test('hello')); // true
+        console.log(`${pattern} hello123`, pattern.test('hello123')); // true
+        console.log(`${pattern} 123hello`, pattern.test('123hello')); // true
+        console.log(`${pattern} he23llo`, pattern.test('he23llo')); // true
+        console.log(`${pattern} he#llo`, pattern.test('he#llo')); // true
+        console.log(`${pattern} #hello`, pattern.test('#hello')); // false
+
+        pattern = /^\w+$/;
+        console.log(`${pattern} hello`, pattern.test('hello')); // true
+        console.log(`${pattern} hello123`, pattern.test('hello123')); // true
+        console.log(`${pattern} 123hello`, pattern.test('123hello')); // true
+        console.log(`${pattern} he23llo`, pattern.test('he23llo')); // true
+        console.log(`${pattern} he#llo`, pattern.test('he#llo')); // false
+        console.log(`${pattern} #hello`, pattern.test('#hello')); // false
+
+        pattern = /^\W+$/;
+        console.log(`${pattern} hello`, pattern.test('hello')); // false
+        console.log(`${pattern} hello123`, pattern.test('hello123')); // false
+        console.log(`${pattern} 123hello`, pattern.test('123hello')); // false
+        console.log(`${pattern} he23llo`, pattern.test('he23llo')); // false
+        console.log(`${pattern} he#llo`, pattern.test('he#llo')); // true
+        console.log(`${pattern} #hello`, pattern.test('#hello')); // true
+
+        
     </script>
 </body>
 
