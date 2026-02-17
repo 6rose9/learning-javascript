@@ -58,7 +58,55 @@
         console.log(`${pattern} he#llo`, pattern.test('he#llo')); // true
         console.log(`${pattern} #hello`, pattern.test('#hello')); // true
 
-        
+        pattern = /^[a-zA-Z](\w)*/; // * means 0 or more
+
+        pattern = /^A\sB/;
+        console.log(`${pattern} A B`, pattern.test('A B')); // true
+        console.log(`${pattern} A   B`, pattern.test('A B')); // true
+        console.log(`${pattern} A\nB`, pattern.test('A\nB')); // true
+        console.log(`${pattern} A\rB`, pattern.test('A\rB')); // true
+        console.log(`${pattern} AeB`, pattern.test('AeB')); // false
+
+        parent = /^A\SB/;
+        console.log(`${pattern} A B`, pattern.test('A B')); // false
+        console.log(`${pattern} A   B`, pattern.test('A B')); // false
+        console.log(`${pattern} A\nB`, pattern.test('A\nB')); // false
+        console.log(`${pattern} A\rB`, pattern.test('A\rB')); // false
+        console.log(`${pattern} AeB`, pattern.test('AeB')); // true
+
+        pattern = /^\d+$/; // + means 1 or more
+        console.log(`${pattern} 234`, pattern.test('234')); // true
+        console.log(`${pattern} 1`, pattern.test('1')); // true
+        console.log(`${pattern} 234a`, pattern.test('234a')); // false
+        console.log(`${pattern} 2@34`, pattern.test('2@34')) // false
+
+        pattern = /^\D+$/;
+        console.log(`${pattern} 234`, pattern.test('234')); // false
+        console.log(`${pattern} 1`, pattern.test('1')); // false
+        console.log(`${pattern} 234a`, pattern.test('234a')); // false
+        console.log(`${pattern} 2@34`, pattern.test('2@34')) // false
+        console.log(`${pattern} a`, pattern.test('a')) // true
+
+        pattern = /^\d{3}$/;
+        console.log(`${pattern} 234`, pattern.test('234')); // true
+        console.log(`${pattern} 1`, pattern.test('1')); // false
+        console.log(`${pattern} 2344654`, pattern.test('2344654')); // false
+        console.log(`${pattern} 234a`, pattern.test('234a')); // false
+
+        pattern = /^\d{3,5}$/;
+        console.log(`${pattern} 234`, pattern.test('234')); // true
+        console.log(`${pattern} 1`, pattern.test('1')); // false
+        console.log(`${pattern} 2344654`, pattern.test('2344654')); // false
+
+        pattern = /^\d{3,}/;
+        console.log(`${pattern} 234`, pattern.test('234')); // true
+        console.log(`${pattern} 1`, pattern.test('1')); // false
+        console.log(`${pattern} 2344654`, pattern.test('2344654')); // true
+
+        pattern = /^\d?$/; // 0 or one
+        console.log(`${pattern} `, pattern.test(' ')); // true
+        console.log(`${pattern} 1`, pattern.test('1')); // true
+        console.log(`${pattern} 234`, pattern.test('234 ')); //false
     </script>
 </body>
 
