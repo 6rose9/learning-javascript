@@ -107,6 +107,30 @@
         console.log(`${pattern} `, pattern.test(' ')); // true
         console.log(`${pattern} 1`, pattern.test('1')); // true
         console.log(`${pattern} 234`, pattern.test('234 ')); //false
+
+        pattern = /^(a|b|c)+$/;
+        console.log(`${pattern} abc`, pattern.test('abc')); // true
+        console.log(`${pattern} aBc`, pattern.test('aBc')); // false
+        console.log(`${pattern} cde`, pattern.test('cde')); //false
+
+        pattern = /^(a|b|c)+$/i; // i mean not case sensitive
+        console.log(`${pattern} abc`, pattern.test('abc')); // true
+        console.log(`${pattern} aBc`, pattern.test('aBc')); // false
+        console.log(`${pattern} cde`, pattern.test('cde')); //false
+
+        // search
+        console.log('search "JavaScript".search(/script/ui) ', "JavaScript".search(/script/ui));
+        console.log('search "Python".search(/script/ui) ', "Python".search(/script/ui));
+
+        // substring
+        let email = "user@domain.com";
+        console.log('search email ', email.substring(email.search(/@/ui)));
+        console.log('search email ', email.substring(email.search(/@/ui)+1));
+
+        // replace
+        str = "Java & javascript programming javascript";
+        str = str.replace(/javascript/gi, "JavaScript"); // g mean global so find every javascript of str
+        console.log(str);
     </script>
 </body>
 
