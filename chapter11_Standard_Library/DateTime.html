@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date & Time</title>
+</head>
+<body>
+    <script>
+        let now = new Date();
+        console.log('current date: ', now);
+
+        let date = new Date(2025, 11, 13,16, 7, 10);
+        console.log('Date now: ', date);
+
+        console.log('Year ', now.getFullYear());
+        console.log('Month', now.getMonth());
+        console.log('Date ', now.getDate());
+        console.log('day', now.getDay());
+
+        let time = now.getTime();
+        console.log('Time', time); //1771464574506
+        
+        let newDate = new Date(time);
+        console.log('New Date: ', newDate);
+
+    </script>
+</body>
+</html>
