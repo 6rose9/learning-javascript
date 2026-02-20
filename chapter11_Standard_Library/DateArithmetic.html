@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Arithmetic</title>
+</head>
+
+<body>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script> -->
+
+    <script type="module">
+        
+        import moment from 'https://cdn.jsdelivr.net/npm/moment@2.29.4/+esm';
+        
+        console.log(moment().format());
+
+        let now = moment();
+        now.add(14, 'days');
+        console.log('add now to 14 days:', now.format("MMM Do YY"));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Currency</title>
+</head>
+
+<body>
+    <script type="module">
+        import moment from 'https://cdn.jsdelivr.net/npm/moment@2.29.4/+esm';
+
+        let euros = Intl.NumberFormat("es", {style: "currency", currency: "EUR"});
+        let str = euros.format(10);
+        console.log('str ', str);
+        
+    </script>
+</body>
+
+</html>

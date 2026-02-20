@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+</head>
+<body>
+    <script>
+        function div(a, b){
+            if(b == 0){
+                throw new Error("Divide by zero");
+            }
+            return a/b;
+        }
+
+        try {
+            let result = div(10, 0);
+            console.log('Result ', result);
+        } catch (e) {
+            console.error(e);
+        }
+        
+    </script>
+</body>
+</html>
