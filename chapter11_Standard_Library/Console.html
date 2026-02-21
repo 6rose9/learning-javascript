@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console</title>
+</head>
+
+<body>
+    <h1>Logs</h1>
+    <script>
+        console.log("log");
+        console.debug("Debug");
+        console.info("Info");
+        console.warn("Warn");
+        console.error("Error");
+
+        function div(a, b) {
+            // If condition is true → nothing happens
+            // If condition is false → logs "message" as an error
+            console.assert(a !== undefined, "a is empty");
+            console.assert(b !== undefined, "b is empty");
+            return a / b;
+        }
+
+        console.log('div ', div(30, 2));
+        console.log('div ', div(10));
+
+        let items = [10, 20, 30, 40, 50];
+        console.table(items);
+
+        let obj = {
+            name: "Zin Zin",
+            gender: "Female",
+            orders: [
+                {
+                    product: "bag",
+                    price: 30000,
+                    count: 1,
+                },
+                {
+                    product: "book",
+                    price: 7000,
+                    count: 3,
+                },
+            ],
+            total_price: 51000,
+        }
+
+        console.table(obj);
+
+        console.count("label", "Hello");
+        console.count("label", "Hi");
+        console.count("label", "Hey");
+
+        console.countReset("label");
+        console.count("label", "Test");
+
+        console.group();
+        console.log('Level 1');
+        console.group();
+        console.log('Level 2');
+        console.groupEnd();
+        console.groupEnd();
+
+        console.log('back to normal');
+
+        console.time('step1');
+        console.timeLog('step1');
+        console.timeLog('step1');
+        console.timeEnd('step1');
+
+        // console.clear();
+    </script>
+</body>
+
+</html>

@@ -12,10 +12,10 @@
         let students = [
             {
                 name: "Aung Aung",
-                age: 40,
+                age: 30,
             },
             {
-                name : "Mya Mya", 
+                name: "Mya Mya",
                 age: 30,
             },
             {
@@ -24,20 +24,28 @@
             },
             {
                 name: "Khin Khin",
-                age: 18,
-            }, 
+                age: 19,
+            },
             {
                 name: "Tin Win",
                 age: 19
             }
         ];
 
-        students.sort((a,b) => a.age - b.age);
+        students.sort((a, b) => {
+            if (a.age == b.age) {
+                return a.name.localeCompare(b.name);
+            }
+            else {
+                return a.age - b.age;
+            }
+        });
 
         /*
-            == 0
-            > 1
-            < -1
+            // ascending
+            == 0  → keep original order (no change)
+            < 0   → a comes before b
+            > 0   → b comes before a
         */
 
         console.log('Students ', students);
