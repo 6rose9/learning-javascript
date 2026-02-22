@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+</head>
+
+<body>
+    <div>
+        <h3>What is Process?</h3>
+        <p>
+            A process is a running instance of a program. It includes its own memory space, variables, and resources.
+        </p>
+    </div>
+    <div>
+        <h3>What is thread?</h3>
+        <p>
+            A thread is the smallest unit of execution within a process. It represents a single sequence of instructions
+            that can be executed independently by a CPU.
+            A process can have one or more threads running at the same time.
+            These threads share the same memory space of the process, but each thread has its own
+            execution stack (which keeps track of method calls, local variables, etc.).
+            In the context of programming, threads are used to perform
+            multiple operations concurrently, allowing for better resource utilization and more responsive programs.
+        </p>
+    </div>
+
+    <div>
+        <h3>What is Multithreading?</h3>
+        <p>
+            Multithreading allows a program to perform multiple operations at once (concurrently) by splitting the task
+            into multiple threads. Each thread can execute independently, but they still share the same memory and
+            resources. For example:In a web server, one thread could handle incoming requests, while another thread
+            processes data, and yet another handles logging.
+        </p>
+    </div>
+
+    <div>
+        <h3>Single-threaded vs. Multi-threaded</h3>
+        <p>
+            <strong>Single-threaded:</strong>
+            <span>
+                The program runs one instruction at a time. If one task takes too long (e.g., reading a file), the
+                entire program might freeze until it's done.
+            </span>
+        </p>
+        <p>
+            <strong>Multi-threaded:</strong>
+            <span>
+                Multiple tasks can run simultaneously. For example, in a multi-core CPU, each thread can run on a
+                different core, executing in parallel, improving performance.
+            </span>
+        </p>
+    </div>
+
+    <div>
+        <h3>Use in JavaScript</h3>
+        <p>
+            JavaScript is single-threaded by default, meaning it executes one command at a time in sequence. However,
+            JavaScript can handle asynchronous tasks (like I/O operations, API calls) without blocking the main thread
+            using mechanisms like the event loop and Web Workers, which simulate concurrency.
+        </p>
+    </div>
+    <div>
+        Think of a process as a factory, and each thread is like a worker in that factory. If you have only one worker
+        (a single thread), that worker has to do all the jobs, one by one. But if you add more workers (multiple
+        threads), they can handle different tasks at the same time, speeding up production.
+    </div>
+
+    <hr>
+
+    <div>
+        <h3>What the Event Loop?</h3>
+        <p>
+            The event loop is a mechanism that constantly checks:
+        <ul>
+            <li>Is the call stack empty?</li>
+            <li>Are there callbacks waiting in the queue?</li>
+        </ul>
+        </p>
+        If the stack is empty, it takes the next callback from the queue and runs it.
+    </div>
+
+    <div>
+        <h3>What setTimeout?</h3>
+        <p>
+            <b>setTimeout</b> is a Web API (in browsers) or a Node.js API.
+        <p>It tells the environment: “After X milliseconds, run this callback.”</p>
+        </p>
+    </div>
+
+    <div>
+        <h3>Call Stack (JavaScript meaning)</h3>
+        <p>
+            In JavaScript, when we say “stack”, we usually mean the call stack.
+        <ul>
+            <li>Tracks which function is currently running</li>
+            <li>Manages execution order</li>
+            <li>part of the JS engine</li>
+        </ul>
+        </p>
+    </div>
+
+    <hr>
+    <script>
+        // only one time
+        setTimeout(() => {
+            console.log('Time Out');
+        }, 1000);
+
+        console.log('Hello');
+
+        setInterval(() => {
+            console.log('tick');
+        }, 1000)
+
+    </script>
+</body>
+
+</html>

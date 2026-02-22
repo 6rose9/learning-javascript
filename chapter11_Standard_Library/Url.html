@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL</title>
+</head>
+<body>
+    <script>
+        let url = new URL("https://example.com:8000/path/name?q=term#fragment");
+        console.log(url);
+
+        let str = encodeURI("https://www.google.com?q=hello world"); 
+        console.log(str); // https://www.google.com?q=hello%20world
+
+        console.log(decodeURI(str)); // https://www.google.com?q=hello world
+
+        
+    </script>
+</body>
+</html>
