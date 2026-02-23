@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Loop</title>
+</head>
+
+<body>
+    <ul>
+        <li>stack frame code </li>
+        <li>callback queue (Event Loop)</li>
+    </ul>
+
+    <script>
+
+        // web api (callback queue)
+        setTimeout(() => {
+            console.log("Hello");
+        }, 0);
+
+        // stack frame code
+        console.log('World');
+
+        function delay(ms) {
+            let now = new Date();
+            while (new Date() - now < ms) {
+                console.log('Delay...');
+            }
+        }
+
+        // stack frame code
+        delay(100);
+        console.log('Do Now')
+
+    </script>
+</body>
+
+</html>
