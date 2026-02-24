@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterator</title>
+</head>
+
+<body>
+    <script>
+        
+        let arr = [1, 2, 3, 4, 5];
+        for (const item of arr) {
+            console.log(item);
+        }
+
+        let m = new Map([["one", 1], ["two", 2]]);
+        for (const [key, value] of m) {
+            console.log('Key ', key);
+        }
+
+        let iterator = arr[Symbol.iterator]();
+        // console.log('next ', iterator.next());
+        // console.log('next ', iterator.next());
+        // console.log('next ', iterator.next());
+        // console.log('next ', iterator.next());
+        // console.log('next ', iterator.next());
+
+        for (let result = iterator.next(); !result.done; result = iterator.next()) {
+            console.log(result.value);
+        }
+
+    </script>
+</body>
+
+</html>
