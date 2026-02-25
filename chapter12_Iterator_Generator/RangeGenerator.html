@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator</title>
+</head>
+
+<body>
+    <script>
+
+        function* range(from, to) {
+            for (let i = from; i <= to; i++) {
+                yield i;
+            }
+        }
+
+        let generator = range(1, 5);
+        console.log('next ', generator.next());
+        console.log('next ', generator.next());
+        console.log('next ', generator.next());
+        console.log('next ', generator.next());
+        console.log('next ', generator.next());
+        console.log('next ', generator.next());
+
+        for(const item of range(1,5)){
+            console.log('Item ', item);
+        }
+
+    </script>
+</body>
+
+</html>
