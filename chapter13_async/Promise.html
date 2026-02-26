@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+
+<body>
+    <script>
+        fetch('https://dummyjson.com/todos')
+            .then(response => response.json())
+            .then(todos => {
+                console.log('Todo ', todos);
+                fetch('https://dummyjson.com/todos/user/15')
+                    .then(res => res.json())
+                    .then(user => {
+                        console.log('User ', user);
+                    })
+                    .catch(err => console.log('Fetch user error', err));
+            })
+            .catch(err => console.log('Error catched ', err));
+    </script>
+</body>
+
+</html>

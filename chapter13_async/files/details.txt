@@ -1,0 +1,77 @@
+13.1 Asynchronous Programming with Callbacks
+
+At its most fundamental level, asynchronous programming in
+JavaScript is done with callbacks. A callback is a function that you
+write and then pass to some other function. That other function then
+invokes (“calls back”) your function when some condition is met or
+some (asynchronous) event occurs. The invocation of the callback
+function you provide notifies you of the condition or event, and
+sometimes, the invocation will include function arguments that provide
+additional details. This is easier to understand with some concrete
+examples, and the subsections that follow demonstrate various forms of
+callback-based asynchronous programming using both client-side
+JavaScript and Node.
+
+13.1.1 Timers
+One of the simplest kinds of asynchrony is when you want to run some
+code after a certain amount of time has elapsed. As we saw in §11.10,
+you can do this with the setTimeout() function:
+setTimeout(checkForUpdates, 60000);
+The first argument to setTimeout() is a function and the second is
+a time interval measured in milliseconds. In the preceding code, a
+hypothetical checkForUpdates() function will be called 60,000
+milliseconds (1 minute) after the setTimeout() call.
+checkForUpdates() is a callback function that your program
+might define, and setTimeout() is the function that you invoke to
+register your callback function and specify under what asynchronous
+conditions it should be invoked.
+setTimeout() calls the specified callback function one time,
+passing no arguments, and then forgets about it. If you are writing a
+function that really does check for updates, you probably want it to run
+repeatedly. You can do this by using setInterval() instead of
+setTimeout():
+// Call checkForUpdates in one minute and then again every
+minute after that
+let updateIntervalId = setInterval(checkForUpdates, 60000);
+// setInterval() returns a value that we can use to stop the
+repeated
+// invocations by calling clearInterval(). (Similarly,
+setTimeout()
+// returns a value that you can pass to clearTimeout())
+function stopCheckingForUpdates() {
+clearInterval(updateIntervalId);
+}
+
+13.1.2 Events
+Client-side JavaScript programs are almost universally event driven:
+rather than running some kind of predetermined computation, they
+typically wait for the user to do something and then respond to the
+user’s actions. The web browser generates an event when the user
+presses a key on the keyboard, moves the mouse, clicks a mouse
+button, or touches a touchscreen device. Event-driven JavaScript
+programs register callback functions for specified types of events in
+specified contexts, and the web browser invokes those functions
+whenever the specified events occur. These callback functions are
+called event handlers or event listeners, and they are registered with
+addEventListener():
+// Ask the web browser to return an object representing the
+HTML
+// <button> element that matches this CSS selector
+let okay = document.querySelector('#confirmUpdateDialog
+button.okay');
+// Now register a callback function to be invoked when the
+user
+// clicks on that button.
+okay.addEventListener('click', applyUpdate);
+In this example, applyUpdate() is a hypothetical callback function
+that we assume is implemented somewhere else. The call to
+document.querySelector() returns an object that represents a
+single specified element in the web page. We call
+addEventListener() on that element to register our callback.
+Then the first argument to addEventListener() is a string that
+specifies the kind of event we’re interested in—a mouse click or
+touchscreen tap, in this case. If the user clicks or taps on that specific
+element of the web page, then the browser will invoke our
+applyUpdate() callback function, passing an object that includes
+details (such as the time and the mouse pointer coordinates) about the
+event.

@@ -1,0 +1,6 @@
+Ironically, even though JavaScript provides these powerful features for
+working with asynchronous code, there are no features of the core
+language that are themselves asynchronous. In order to demonstrate
+Promises, async, await, and for/await, therefore, we will first
+take a detour into client-side and server-side JavaScript to explain
+some of the asynchronous features of web browsers and Node. 

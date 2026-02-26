@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+</head>
+
+<body>
+    <div>
+        A program that is running is called process.
+        <ul>
+            <li>CPU task -> fast</li>
+            <li>IO task -> slow</li>
+        </ul>
+    </div>
+
+    <div>
+        A <strong>callback</strong> is a function that you
+        write and then pass to some other function. That other function then
+        invokes (“calls back”) your function when some condition is met or
+        some (asynchronous) event occurs.
+    </div>
+
+    <button type="button" id="btnClick">Click Me</button>
+
+    <script>
+
+        document.getElementById('btnClick').addEventListener('click', function () {
+            console.log('button clicked callback');
+        });
+
+        function asyncDiv1(a, b) {
+            setTimeout(function () {
+                console.log('division started ', a / b);
+            }, 1000);
+        }
+
+        asyncDiv1(5, 2);
+        console.log('end');
+
+        /*
+            end
+            division started  2.5
+        */
+
+        function asyncDiv2(a, b, callback) {
+            setTimeout(function () {
+                console.log('division started...');
+                callback(a / b);
+            }, 500);
+        }
+
+        function process(divResult) {
+            console.log('Processing div result ', divResult);
+        }
+
+        asyncDiv2(10, 2, process);
+
+    </script>
+</body>
+
+</html>
