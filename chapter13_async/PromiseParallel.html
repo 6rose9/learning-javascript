@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Parallel</title>
+</head>
+
+<body>
+    <script>
+        let url1 = "https://dummyjson.com/todos/1";
+        let url2 = "https://dummyjson.com/todos/2";
+
+        // like callback hell 
+        console.time('test1');
+        fetch(url1)
+            .then(res => res.json())
+            .then(task1 => {
+                // task1 success, call task2
+                fetch(url2)
+                    .then(res => res.json())
+                    .then(task2 => {
+                        console.timeLog('test1');
+                        console.log('task 1', task1);
+                        console.log('task 2', task2);
+                    });
+            });
+
+        let result = [];
+        console.time('test2');
+        fetch(url1)
+            .then(res => res.json())
+            .then(task1 => {
+                result.push(task1);
+                if (result.length == 2) {
+                    console.timeLog('test2');
+                    console.log('Done two tasks', result);
+                }
+            });
+
+        fetch(url2)
+            .then(res => res.json())
+            .then(task2 => {
+                result.push(task2);
+                if (result.length == 2) {
+                    console.timeLog('test2');
+                    console.log('Done two tasks', result);
+                }
+            });
+
+        let urls = [url1, url2];
+        let promises = urls.map(url => fetch(url).then(res => res.json()));
+        console.time('test3');
+        Promise.all(promises)
+            .then(resp => {
+                console.timeLog('test3');
+                console.log('Done two tasks', resp);
+            })
+
+    </script>
+</body>
+
+</html>
