@@ -52,11 +52,30 @@
         let urls = [url1, url2];
         let promises = urls.map(url => fetch(url).then(res => res.json()));
         console.time('test3');
+
+        // limitation => all promise need to be success
+        // sequence
         Promise.all(promises)
             .then(resp => {
                 console.timeLog('test3');
                 console.log('Done two tasks', resp);
-            })
+            });
+
+        // success or fail
+        console.time('test4');
+        Promise.allSettled(promises)
+            .then(result => {
+                console.timeLog('test4');
+                console.log('Done');
+            });
+
+        // take the fastest respone
+        console.time('test5');
+        Promise.race(promises)
+            .then(result => {
+                console.timeLog('test5');
+                console.log('Done');
+            });
 
     </script>
 </body>

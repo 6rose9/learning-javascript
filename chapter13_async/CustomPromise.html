@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Promise</title>
+</head>
+
+<body>
+    <script>
+        // Requirement
+        // why async, 
+        // why callback, 
+        // why promise, 
+        // why asyn await
+        // -------------------------------------------------- I will learn later 😹😹😹.
+        class CustomPromise {
+
+            handler = [];
+
+            constructor(executorFn) {
+                console.log('Executor function', executorFn);
+                setTimeout(() => {
+                    console.log('settimeout fired ', this.handler);
+                }, 0);
+            }
+
+            then(successHandler, errorHandler) {
+                // console.log('Success callback', successHandler, ', error callback', errorHandler);
+                // console.log('this', this);
+                this.handler.push({
+                    success: successHandler,
+                    error: errorHandler
+                });
+
+                return this;
+            }
+        }
+
+        console.log('Started...');
+
+        let promise = new CustomPromise((resolve, reject) => {
+            resolve('Hello');
+        })
+            .then(data => data * 2, error => console.log("Error ", error))
+            .then(data => console.log('Success'), err => console.log('Error ', err));
+
+    </script>
+</body>
+
+</html>
