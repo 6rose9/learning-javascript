@@ -8,29 +8,50 @@
 </head>
 
 <body>
-    <div>
-        A program that is running is called process.
-        <ul>
-            <li>CPU task -> fast</li>
-            <li>IO task -> slow</li>
-        </ul>
-    </div>
 
     <div>
         A <strong>callback</strong> is a function that you
         write and then pass to some other function. That other function then
-        invokes (“calls back”) your function when some condition is met or
+        invokes your function(callback) when some condition is met or
         some (asynchronous) event occurs.
+
+        <p>A callback is not automatically asynchronous.</p>
+        <p>It can be:</p>
+        <ol>
+            <li>Synchronous</li>
+            <li>Asynchronous</li>
+        </ol>
+        <p>Asynchronous callbacks are handled by the event loop (queue)</p>
+        <p>Sync callbacks run immediately on the stack</p>
     </div>
 
     <button type="button" id="btnClick">Click Me</button>
 
     <script>
 
+        // ------------------------------------------- Synchronous Callback
+        function greet(name, callback) {
+            console.log("Hello " + name);
+            callback();
+        }
+
+        greet("John", function () {
+            console.log("This runs immediately");
+        });
+
+        // ------------------------------------------- Asynchronous Callback
+
+        // Example 1
+        setTimeout(function () {
+            console.log("Async callback");
+        }, 1000);
+
+        // Example 2
         document.getElementById('btnClick').addEventListener('click', function () {
             console.log('button clicked callback');
         });
 
+        // Example 3
         function asyncDiv1(a, b) {
             setTimeout(function () {
                 console.log('division started ', a / b);
@@ -45,6 +66,7 @@
             division started  2.5
         */
 
+        // Example 4
         function asyncDiv2(a, b, callback) {
             setTimeout(function () {
                 console.log('division started...');

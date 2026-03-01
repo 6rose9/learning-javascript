@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Hell</title>
+</head>
+
+<body>
+    <script>
+
+        //-------------------------------------- problem: callback hell
+        function getUser(userId, callback) {
+            setTimeout(() => {
+                console.log("Got user");
+                callback({ id: userId, name: "John" });
+            }, 1000);
+        }
+
+        function getOrders(user, callback) {
+            setTimeout(() => {
+                console.log("Got orders");
+                callback([{ id: 1 }, { id: 2 }]);
+            }, 1000);
+        }
+
+        function getOrderDetails(order, callback) {
+            setTimeout(() => {
+                console.log("Got order details");
+                callback({ id: order.id, item: "Laptop" });
+            }, 1000);
+        }
+
+        getUser(1, function (user) {
+            getOrders(user, function (orders) {
+                getOrderDetails(orders[0], function (details) {
+                    console.log("Final Result:", details);
+                });
+            });
+        });
+
+        //-------------------------------------- solution1: promise
+        function getUser(userId) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log("Got user");
+                    resolve({ id: userId, name: "John" });
+                }, 1000);
+            });
+        }
+
+        function getOrders(user) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log("Got orders");
+                    resolve([{ id: 1 }, { id: 2 }]);
+                }, 1000);
+            });
+        }
+
+        function getOrderDetails(order) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log("Got order details");
+                    resolve({ id: order.id, item: "Laptop" });
+                }, 1000);
+            });
+        }
+
+        getUser(1)
+            .then(getOrders)
+            .then((orders) => getOrderDetails(orders[0]))
+            .then((details) => console.log("Final Result:", details))
+            .catch((err) => console.error(err));
+
+        //-------------------------------------- solution2: Async/Await
+        async function main() {
+            try {
+                const user = await getUser(1);
+                const orders = await getOrders(user);
+                const details = await getOrderDetails(orders[0]);
+
+                console.log("Final Result:", details);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        main();
+
+    </script>
+</body>
+
+</html>
