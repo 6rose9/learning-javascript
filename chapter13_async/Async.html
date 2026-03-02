@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+
+<body>
+    <script>
+        const getNumber = async (num) => {
+            return num;
+        }
+
+        const num1 = getNumber(10);
+        // console.log(num1); // promise
+        num1.then(data => console.log(data),err => console.log(err));
+
+        const getName = async (name) => {
+            return name;
+        }
+        
+        async function haveFun(){
+            let myName = await getName("Zin Zin");
+            // console.log(`My name is ${myName}`);
+        }
+
+        console.log("have fun",haveFun()); // promise
+
+        function another(){
+            return Promise.resolve(100);
+        }
+
+        console.log("Another",another()); // promise
+
+    </script>
+</body>
+
+</html>

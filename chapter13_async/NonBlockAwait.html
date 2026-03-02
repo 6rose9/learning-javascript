@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise All</title>
+</head>
+
+<body>
+    <script>
+        let url1 = "https://dummyjson.com/todos/1";
+        let url2 = "https://dummyjson.com/todos/2";
+
+        async function nonBlockFetch(urls) {
+            let promises = urls.map(url => fetch(url).then(res => res.json()));
+            let data = await Promise.all(promises);
+            console.log(data);
+        }
+
+        nonBlockFetch([url1, url2]);
+        
+    </script>
+</body>
+
+</html>

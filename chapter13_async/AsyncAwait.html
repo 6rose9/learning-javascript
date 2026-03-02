@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+</head>
+
+<body>
+    <div>
+        <h3>RAM</h3>
+        <ul>
+            <li> Call Stack </li>
+            <li> Heap </li>
+            <li> Microtask Queue </li>
+            <li> Macrotask Queue </li>
+        </ul>
+    </div>
+    <div>
+        <h3>
+            A function declared with the async keyword always returns a Promise, regardless of what you return inside
+            it.
+        </h3>
+        <ul>
+            <li>function declaration → Heap </li>
+            <li>function execution → Call Stack</li>
+            <li>promise resolution (.then) → Microtask Queue</li>
+        </ul>
+    </div>
+
+    <!-- ---------------------------------------------------------------------- -->
+    <hr>
+
+    <div>
+        <strong>Note:</strong>
+        await only works inside an async function.
+
+        <ul>
+            <li> <b>async</b> makes the function return a Promise</li>
+            <li> <b>await</b> pauses execution until the Promise resolves</li>
+        </ul>
+    </div>
+
+    <script>
+        let url1 = "https://dummyjson.com/todos/1";
+
+        console.log('started...');
+
+        fetch(url1)
+            .then(res => res.json())
+            .then(data => console.log('Success:', data))
+            .catch(err => console.error(err));
+
+        console.log('ended');
+
+        async function example() {
+            return 42;
+        }
+
+        async function fetchTask() {
+            try {
+                console.log('started async function...');
+                let res = await fetch(url1);
+                let data = await res.json();
+                console.log('Success ', data);
+                console.log('ended');
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fetchTask();
+        console.log(example()); // return promise
+
+    </script>
+</body>
+
+</html>

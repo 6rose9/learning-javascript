@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Await</title>
+</head>
+
+<body>
+    <script>
+        async function fetchTask(url) {
+            try {
+                let res = await fetch(url);
+                let data = await res.json();
+                console.log('Success ', data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // run parallel
+        fetchTask('https://dummyjson.com/todos/1');
+        fetchTask('https://dummyjson.com/todos/2');
+        fetchTask('https://dummyjson.com/todos/3');
+
+    </script>
+</body>
+
+</html>
