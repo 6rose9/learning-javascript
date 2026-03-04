@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Programming</title>
+</head>
+
+<body>
+    <script>
+
+        let obj1 = {
+            name: "Jhon",
+            age: 21,
+        };
+
+        let obj2 = {
+            city: "New York",
+            state: "",
+        }
+
+        // problem : can only check for specific obj
+        function check1(obj) {
+            if (obj.name === "") {
+                console.warn("Name is required");
+                return;
+            }
+            if (obj.age == "") {
+                console.warn("Age is required");
+                return;
+            }
+        }
+
+        function check2(obj) {
+            if (obj.city == "") {
+                console.warn('City is empty');
+                return;
+            }
+            if (obj.state == "") {
+                console.warn('State is empty');
+                return;
+            }
+        }
+
+        // solution: this is one kind of meta programming
+        function checkStringField(obj) {
+            for (let key in obj) {
+                if (typeof obj[key] === "string" && obj[key] === "") {
+                    console.warn(key + " is empty");
+                }
+            }
+        }
+
+        checkStringField(obj1);
+        checkStringField(obj2);
+
+    </script>
+</body>
+
+</html>

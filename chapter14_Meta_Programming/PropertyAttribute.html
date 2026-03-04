@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Attribute</title>
+</head>
+
+<body>
+    <div>
+        <p>
+            The properties of a JavaScript object have names and values, of course,
+            but each property also has three associated attributes that specify how
+            that property behaves and what you can do with it:
+        </p>
+        <ul>
+            <li>
+                The writable attribute specifies whether or not the value of a
+                property can change.
+            </li>
+            <li>
+                The enumerable attribute specifies whether the property is
+                enumerated by the for/in loop and the Object.keys()
+                method.
+            </li>
+            <li>
+                The configurable attribute specifies whether a property can be
+                deleted and also whether the property’s attributes can be
+                changed.
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        let obj1 = {
+            name: "Jhon",
+            age: 31
+        }
+
+        console.log('Obj descriptor ', Object.getOwnPropertyDescriptor(obj1, 'name')); // {value: 'Jhon', writable: true, enumerable: true, configurable: true}
+        console.log('window.top descriptor ', Object.getOwnPropertyDescriptor(window, 'top'));
+
+        Object.defineProperty(obj1, 'gender', {
+            value: 'Male',
+            configurable: false, // can't delete
+            enumerable: false, // gender can't include => for in/of loop
+            writable: false, // can't modify
+        });
+
+        obj1.gender = 'nonbinary';
+
+        delete obj1.gender;
+
+        console.log('Obj1 ', obj1);
+
+        for (const key in obj1) {
+            console.log(key, '=> ', obj1[key]);
+        }
+
+        console.log('keys ', Object.keys(obj1)); //['name', 'age']
+        console.log('isExtensible? ', Object.isExtensible(obj1)); // true
+        obj1.address = "Somewhere on the earth";
+
+        Object.preventExtensions(obj1);
+        obj1.city = "Thaton";
+
+        console.log('isExtensible? ', Object.isExtensible(obj1), obj1); // false
+
+        delete obj1.age; // isExtensible() still delete property
+        console.log(obj1); //{name: 'Jhon', address: 'Somewhere on the earth', gender: 'Male'}
+
+        Object.seal(obj1); // can update
+        delete obj1.address; // delete don't work
+
+        console.log(obj1);
+
+        console.log('isSeal? ', Object.isSealed(obj1)); // true
+        obj1.address = "Thaton";
+        console.log(obj1.address); // Thaton
+
+        Object.freeze(obj1); // can't update, delete / read only mode
+        obj1.name = "Zin Zin";
+        delete obj1.name;
+        console.log(obj1); 
+        console.log('isFrozen? ', Object.isFrozen(obj1)); // true
+
+    </script>
+</body>
+
+</html>
