@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom MVC</title>
+</head>
+
+<body>
+    <div>
+        Name: <span id="txtName"></span>
+    </div>
+
+    <div>
+        Age: <span id="txtAge"></span>
+    </div>
+
+    <script>
+        //---------------------------------- model change => view change auto (like Angular framework)
+        let model = {
+            name: "Alice",
+            age: 20,
+        }
+
+        function updateView() {
+            document.getElementById('txtName').innerHTML = model.name;
+            document.getElementById('txtAge').innerHTML = model.age;
+        }
+
+        function bindModel(obj) {
+            let proxy = {};
+            for (const key in obj) {
+                Object.defineProperty(proxy, key, {
+                    get: function () {
+                        return obj[key];
+                    },
+                    set: function (newValue) {
+                        obj[key] = newValue;
+                        console.log(`Model updated ${key}, new value ${newValue}`);
+                        updateView();
+                    },
+                    enumerable: true,
+                    configurable: true,
+                });
+            }
+
+            return proxy;
+        }
+
+        updateView();
+
+        let proxy = bindModel(model);
+        console.log(proxy);
+        proxy.age = 21;
+        proxy.name = "Doe";
+
+    </script>
+
+</body>
+
+</html>

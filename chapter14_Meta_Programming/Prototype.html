@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+
+<body>
+    <script>
+        let obj1 = {
+            name: "Jhon",
+            age: 21,
+        }
+
+        console.log('get prototype of obj1 ', Object.getPrototypeOf(obj1));
+
+        let parent = {
+            x: 100,
+        }
+
+        let obj2 = Object.create(parent);
+        obj2.y = 39;
+
+        console.log('get prototype of obj2 ', Object.getPrototypeOf(obj2));
+
+    </script>
+</body>
+
+</html>

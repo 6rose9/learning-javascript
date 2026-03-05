@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+<body>
+    <h3>Used for unique key, especially in objects.</h3>
+    <h3>Used more often inside frameworks and libraries than in typical application code.</h3>
+    
+    <script>
+        let name = "example";
+        let symbol1 = Symbol(name);
+        let symbol2 = Symbol(name);
+
+        console.log('symbol1 === symbol2', symbol1 === symbol2);
+        console.log(symbol1); // Symbol(example)
+
+        console.log(Symbol); //ƒ Symbol() { [native code] }
+
+        console.log('Iterator ', Symbol.iterator);
+
+    </script>
+</body>
+</html>

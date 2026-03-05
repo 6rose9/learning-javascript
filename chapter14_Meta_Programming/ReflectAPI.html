@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflect API</title>
+</head>
+
+<body>
+    <script>
+        let parent = {
+            x: 100,
+        }
+
+        let obj1 = Object.create(parent);
+        obj1.y = 39;
+
+        // more safe than Object.getPrototypeOf()
+        console.log('reflect of obj1 ', Reflect.getPrototypeOf(obj1));
+
+        class Human{
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+            }
+
+            speak(){
+                console.log("Human speaking ");
+            }
+        }
+
+        class Teacher extends Human{
+            constructor(name, age){
+                super(name, age);
+            }
+        }
+
+        let h1 = new Human('Jhon', 23);
+        console.log('Human 1 ', h1);
+
+        let h2 = Reflect.construct(Human, ['Doe', 25]);
+        console.log('Human 2 ', h2);
+        h2.speak();
+
+        let className = Teacher;
+        let h3 = Reflect.construct(className, ['Doe', 34]);
+        console.log(h3);
+
+    </script>
+</body>
+
+</html>
