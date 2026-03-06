@@ -7,3 +7,5 @@ https://www.7urtle.com/documentation-7urtle-lambda
 https://fsharpforfunandprofit.com/rop/
 
 https://momentjs.com/
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
