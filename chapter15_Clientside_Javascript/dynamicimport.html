@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+    <button type="button" id="btnLoad">Clock</button>
+    <div id="clock" style="margin-top: 15px;"></div>
+    <script>
+        let div = document.createElement('div');
+        div.textContent = "Hello World";
+        div.style.marginTop = "15px";
+        div.style.padding = "15px";
+        div.style.color = "blue";
+        div.style.border = "1px solid red";
+        console.log('div ', div);
+        document.body.appendChild(div);
+
+        document.getElementById('btnLoad').addEventListener('click', () => {
+            console.log('Load button clicked');
+            loadScript('./js/clock.js');
+        });
+
+        function loadScript(src) {
+            let script = document.createElement('script');
+            script.src = src;
+
+            script.onload = () => {
+                console.log('Script loaded successfully ');
+            }
+
+            script.onerror = () => {
+                console.log('Script failed to load ');
+            }
+
+            document.head.appendChild(script);
+        }
+
+    </script>
+</body>
+
+</html>
