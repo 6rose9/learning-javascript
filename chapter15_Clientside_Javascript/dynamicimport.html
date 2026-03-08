@@ -8,11 +8,25 @@
 </head>
 
 <body>
-    <button type="button" id="btnLoad">Clock</button>
+    <div>
+        <h3>Immediately Invoked Function Expression (IIFE)</h3>
+        <ul>
+            <li>function(){} → function definition</li>
+            <li>(function(){}) → convert function into an expression</li>
+            <li>() → invoke (call) it immediately</li>
+        </ul>
+    </div>
+
+    <button type="button" id="btnLoad">Clock (with Problem) </button>
+    <button type="button" id="btnSolve">Clock (with Solution) </button>
+
     <div id="clock" style="margin-top: 15px;"></div>
+
     <script>
+
+        // DOM Create immediately: Synchronous
         let div = document.createElement('div');
-        div.textContent = "Hello World";
+        div.textContent = "If you want to know current time, click clock button.";
         div.style.marginTop = "15px";
         div.style.padding = "15px";
         div.style.color = "blue";
@@ -20,17 +34,52 @@
         console.log('div ', div);
         document.body.appendChild(div);
 
+        // Event Listener: async trigger (event queue)
         document.getElementById('btnLoad').addEventListener('click', () => {
-            console.log('Load button clicked');
+
+            // runs in call stack
+            console.log('Clock button clicked');
+
+            // synchronous function call
             loadScript('./js/clock.js');
+
+            // loadScript() finishes immediately after starting script download
+            // the browser downloads clock.js asynchronously
+            // so the script has NOT loaded yet
+
+            // api(); // defined in clock.js, it will be undefined
+            ClockJS.api(); //Uncaught ReferenceError: ClockJS is not defined
+
         });
 
-        function loadScript(src) {
+        document.getElementById('btnSolve').addEventListener('click', () => {
+            loadScript('./js/clock.js', () => {
+                ClockJS.api();
+            });
+        });
+
+        // function loadScript(src) {
+        //     let script = document.createElement('script');
+        //     script.src = src;
+
+        //     script.onload = () => {
+        //         console.log('Script loaded successfully ');
+        //     }
+
+        //     script.onerror = () => {
+        //         console.log('Script failed to load ');
+        //     }
+
+        //     document.head.appendChild(script);
+        // }
+
+        function loadScript(src, callback) {
             let script = document.createElement('script');
             script.src = src;
 
             script.onload = () => {
                 console.log('Script loaded successfully ');
+                callback && callback();
             }
 
             script.onerror = () => {
@@ -39,7 +88,6 @@
 
             document.head.appendChild(script);
         }
-
     </script>
 </body>
 
