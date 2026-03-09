@@ -1,0 +1,17 @@
+DOM -> document object model
+
+Browser
+    rendering engine
+    JS engine
+
+Difference browsers may have difference rendering and js engines.
+
+Same rendering engine -> same layout output
+
+JS engine -> run js code
+
+Rendering engine -> store html code as tree structure in memory ( this is called DOM)
+
+Browser download -> HTML file → text document
+
+Rendering engine parses it → DOM tree in memory
