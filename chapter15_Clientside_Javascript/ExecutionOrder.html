@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execution Order</title>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM fully loaded and parsed ');
+        })
+    </script>
+
+    <script>
+        console.log('Script 1');
+        let data = "Hello";
+        function delay(ms) {
+            let start = Date.now();
+            let current;
+            while (Date.now() - ms < start) {
+                current = new Date().toLocaleString();
+                console.log(current);
+            }
+            console.log('Done script 1');
+        }
+        delay(200);
+    </script>
+
+    <script>
+        console.log('Script 2');
+        console.log('data ', data);
+    </script>
+
+    <script src="./js/clock.js" async>
+        console.log('Script 3');
+    </script>
+
+    <script>
+        console.log('Script 4 and no need to wait script 3');
+    </script>
+
+</body>
+
+</html>

@@ -20,6 +20,11 @@ window.ClockJS = window.ClockJS || (function () {
 
     let clockEl = document.getElementById("clock");
 
+    if(!clockEl){
+        console.log('Clock UI does not exist');
+        return;
+    }
+
     setInterval(() => {
         let time = new Date().toLocaleString();
         clockEl.innerText = time;
