@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Attack</title>
+</head>
+
+<body>
+    <h1>Welcome </h1>
+    <h3>Cross-Site Scripting</h3>
+    <p>
+        Cross-Site Scripting (XSS) happens when an attacker injects malicious JavaScript into your website, and that
+        script runs in other users’ browsers. This can steal cookies, tokens, or modify the page.
+    </p>
+    <ul>
+        <li>Never render raw user input directly into HTML.</li>
+        <li>Most frameworks automatically escape output.</li>
+        <li>Validate and Sanitize Input</li>
+        <li>Use Content Security Policy (CSP): tells the browser what scripts are allowed.(Content-Security-Policy:
+            script-src 'self')</li>
+        <li>Use HttpOnly Cookies: Set cookies as HttpOnly so JavaScript cannot read them.</li>
+        <li>Avoid Dangerous DOM APIs: element.innerHTML</li>
+    </ul>
+
+    <h3>Types of XSS</h3>
+    <ul>
+        <li>Stored XSS: Malicious script stored in database. (eg.Comment system, Forum post)</li>
+        <li>Reflected XSS: Script comes from request URL. (eg. site.com?q=
+            <script>alert(1)</script>)
+        </li>
+        <li>DOM-based XSS: Client-side JavaScript inserts malicious code. (eg.
+            document.getElementById("output").innerHTML = location.hash;)</li>
+    </ul>
+
+    <!-- --------------------------------------------------------------------- -->
+    <hr>
+
+    <div>
+        <p>
+            Browsers intentionally restrict JavaScript from reading or writing arbitrary files on your computer for
+            security and privacy reasons. If JS could freely access files, any website could steal or modify your local
+            data.
+        </p>
+
+        <h2>How Browsers Allow Safe File Access?</h2>
+        <p>How Browsers Allow Safe File Access</p>
+        <input type="file" id="fileInput">
+        <p>JS cannot choose the file itself.</p>
+        <ul>
+            <li>The user manually selects the file</li>
+            <li>JavaScript can only access that chosen file</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Modern Controlled File APIs</h3>
+        <ul>
+            <li><strong>File API:</strong>Read user-selected files.</li>
+            <li><strong>File System Access API: </strong>Allows writing files after permission</li>
+        </ul>
+        <p>Note: Still requires user approval.</p>
+    </div>
+
+    <!-- ---------------------------------------------------------------------- -->
+    <hr>
+
+    <div>
+        <h3>Why Node.js Can Read Files?</h3>
+        <p>JavaScript itself can read files, but browser JS cannot.</p>
+    </div>
+
+    <div>
+        <h3>Why Node.js allows it:</h3>
+        <ul>
+            <li>Node runs outside the browser</li>
+            <li>It has direct OS access</li>
+            <li>It's intended for server-side programming</li>
+        </ul>
+    </div>
+
+    <script>
+        let name = new URL(document.URL).searchParams.get("name");
+        document.querySelector('h1').innerHTML = "Hello " + name;
+
+        // user selected file
+        const file = document.getElementById("fileInput").files[0];
+    </script>
+    <!-- <img src="attackfile.js" onerror="alert('Login Box')";console.log(window.localStorage) /> -->
+</body>
+
+</html>
