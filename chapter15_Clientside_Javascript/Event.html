@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+
+<body>
+
+    <h1>Click anywhere</h1>
+    <button id="parent">Parent</button>
+    <button id="btnRemove">Remove</button>
+
+    <div id="parentDiv" style="padding: 15px;border: 1px solid red;">
+        <div id="onceDiv" style="margin-bottom: 15px;">Once</div>
+        <div id="child">Child</div>
+    </div>
+
+    <div>
+        <h3><u>event.stopPropagation()</u></h3>
+        <p>Stops the event from bubbling (or capturing) to parent elements, but other listeners on the same element will
+            still run.</p>
+    </div>
+
+    <div>
+        <h3><u>event.stopImmediatePropagation()</u></h3>
+        <p>Stop:</p>
+        <ul>
+            <li>Event bubbling to parents</li>
+            <li>All remaining listeners on the same element</li>
+        </ul>
+    </div>
+
+    <script>
+        // document.addEventListener("click", function (event) {
+        //     // console.log("Target", event.target);
+        //     console.log("Clicked at: " + event.clientX + ", " + event.clientY);
+        // });
+
+        // console.log(document);
+        // console.log(document.body);
+
+        // document.body.addEventListener("click", function (event) {
+        //     console.log("Event type: " + event.type);
+        // });
+
+        function handler1(event) {
+            console.log('Parent Button Handler1', event);
+        }
+
+        function handler2(event) {
+            console.log('Parent Button Handler2', event);
+            event.stopImmediatePropagation();
+            console.log('Stop!')
+        }
+
+        document.getElementById('parent')
+            .addEventListener('click', handler1);
+
+        document.getElementById('parent')
+            .addEventListener('click', (event) => {
+                console.log('Parent Button Click Before stop immediate propagation', event);
+            });
+
+        document.getElementById('parent')
+            .addEventListener('click', handler2);
+
+        document.getElementById('parent')
+            .addEventListener('click', (event) => {
+                console.log('Parent Button Click After stop immediate propagation', event);
+            });
+
+        document.getElementById('btnRemove')
+            .addEventListener('click', () => {
+                document.getElementById('parent')
+                    .removeEventListener('click', handler1);
+            })
+
+        document.getElementById('onceDiv')
+            .addEventListener('click', (event) => {
+                console.log('Div once clicked', event);
+            }, { once: true });
+
+        document.getElementById('parentDiv')
+            .addEventListener('click', (e) => {
+                console.log('Parent Clicked');
+                console.log('Target', e.target, 'Current Target', e.currentTarget);
+            });
+
+        document.getElementById('child')
+            .addEventListener('click', (event) => {
+                console.log('Child Clicked: Stop Propagation -> bubbling');
+                console.log('Target', event.target, 'Current Target', event.currentTarget);
+                event.stopPropagation();
+            });
+    </script>
+</body>
+
+</html>
