@@ -70,6 +70,8 @@
         document.getElementById('parent')
             .addEventListener('click', (event) => {
                 console.log('Parent Button Click After stop immediate propagation', event);
+            }, {
+                capture: true // just knowledge 
             });
 
         document.getElementById('btnRemove')
@@ -95,6 +97,11 @@
                 console.log('Target', event.target, 'Current Target', event.currentTarget);
                 event.stopPropagation();
             });
+
+        document.addEventListener('contextmenu', (event) => {
+            console.log('Document right click 1', event);
+            event.preventDefault();
+        });
     </script>
 </body>
 

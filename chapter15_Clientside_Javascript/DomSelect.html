@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Select</title>
+    <style>
+        .highlight{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="highlight">Div One</div>
+    <div>
+        Div Two
+        <div>Div Three</div>
+    </div>
+    <span id="container" class="highlight">Container</span>
+    <script>
+        console.log('querySelectorAll Div', document.querySelectorAll('div'));
+        console.log('querySelector div', document.querySelector('div'));
+        console.log('querySelector ', document.querySelector('#container'));
+        console.log('querySelctorAll ', document.querySelectorAll('.highlight'));
+    </script>
+</body>
+</html>

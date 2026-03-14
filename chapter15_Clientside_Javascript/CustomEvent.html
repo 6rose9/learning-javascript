@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Event</title>
+</head>
+
+<body>
+    <button type="button" id="btnDoAsync">Schedule Asyn</button>
+    <button type="button" id="goBack">Go Back</button>
+    <script>
+        document.getElementById('btnDoAsync')
+            .addEventListener('click', async () => {
+                setTimeout(() => {
+                    console.log('Task Done!');
+                    document.dispatchEvent(new CustomEvent('taskDone', {
+                        detail: {
+                            message: 'Task completed successfully'
+                        }
+                    }));
+
+                    document.getElementById('goBack').dispatchEvent(new Event('click'));
+                }, 3000)
+            });
+
+        document.addEventListener('taskDone', (event) => {
+            console.log('Custom event received ', event);
+            console.log('Custom event message ', event.detail);
+        });
+    </script>
+</body>
+
+</html>
