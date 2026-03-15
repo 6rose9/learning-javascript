@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="highlight">Parent</div>
+    <button id="btnRemoveClass">Remove</button>
+    &nbsp;
+    <button id="btnAddClass">Add</button>
+    <div>Second Div</div>
+    <script>
+        let container = document.getElementById('container');
+        console.log('container class ', container.classList);
+
+        document.getElementById('btnRemoveClass').addEventListener('click', () => {
+            console.log('Removed highlight class');
+            container.classList.remove('highlight');
+        });
+
+        document.getElementById('btnAddClass').addEventListener('click', () => {
+            console.log('Added highlight class');
+            container.classList.add('highlight');
+        });
+    </script>
+</body>
+
+</html>

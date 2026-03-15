@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live DOM</title>
+</head>
+
+<body>
+    <ol id="container">
+        <li>Item One</li>
+        <li>Item Two</li>
+        <li>Item Three</li>
+    </ol>
+    <button id="btnDuplicate">Duplicate</button>
+    <script>
+        document.getElementById('btnDuplicate').addEventListener('click', function () {
+
+            // for (let i = 0; i < document.getElementsByTagName('li').length; i++) {
+            //     console.log('btn duplicated click');
+            //     let child = document.createElement('li');
+            //     child.textContent = 'New Item';
+            //     document.getElementById('container').appendChild(child);
+            // }
+
+            for (let i = 0, len = document.getElementsByTagName('li').length; i < len; i++) {
+                console.log('btn duplicated click');
+                let child = document.createElement('li');
+                child.textContent = 'New Item';
+                document.getElementById('container').appendChild(child);
+            }
+        });
+    </script>
+</body>
+
+</html>
