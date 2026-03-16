@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Set</title>
+</head>
+
+<body>
+    <h3>Data Set</h3>
+    <p>Store only string on DOM</p>
+    <ol>
+        <li data-id="1">Apple</li>
+        <li data-id="2">Orange</li>
+        <li data-id="3">Banana</li>
+    </ol>
+
+    <div id="container">Data</div>
+
+    <br>
+
+    <div id="box">
+        Hello
+        <span style="display:none">Secret</span>
+        <span id="child">Child</span>
+    </div>
+
+    <br>
+
+    <button id="btnUpdate">Update Data</button>
+    &nbsp;
+    <button id="btnAdd">Create Element</button>
+    &nbsp;
+    <button id="btnRemove">Remove Element</button>
+    &nbsp;
+    <button id="btnStyleUpdate">Update Style</button>
+
+    <script>
+        // document.querySelectorAll('li').forEach(function (item) {
+        //     console.log('Item text content ', item);
+        // })
+
+        document.querySelector('ol').addEventListener('click', (e) => {
+            let li = e.target.closest('li');
+            let id = li.dataset.id;
+            console.log('id is', id);
+        });
+
+        document.getElementById('btnUpdate').addEventListener('click', function () {
+            console.log('btn update click');
+            let container = document.getElementById('container');
+            container.dataset.info = "Updated Info";
+
+            // container.innerText = "<h1>Hello I am back</h1>";
+            // container.innerHTML = "<h1>Inner HTML should not use</h1>";
+            // container.outerHTML = "<p>I am outer html</p>"; // update container div to p tag
+
+            // console.log('container data-info ', container.dataset.info);
+
+            let el = document.getElementById("box");
+            console.log(el.textContent); //text inside the element, including hidden text.
+        });
+
+        document.getElementById('btnAdd').addEventListener('click', () => {
+            let container = document.getElementById('container');
+            let newDiv = document.createElement('div');
+            newDiv.textContent = 'New Data Div';
+            // container.append(newDiv);
+            // container.prepend(newDiv); // inside container
+            // container.before(newDiv);
+            // container.after(newDiv); // outside container
+            document.body.appendChild(container.cloneNode(true));
+        });
+
+        document.getElementById('btnRemove').addEventListener('click', () => {
+            let child = document.getElementById('child');
+            child?.remove();
+        });
+
+        document.getElementById("btnStyleUpdate").addEventListener("click", function () {
+            // change style, side effect dom => may slow app
+            let container = document.getElementById('container');
+            container.style.color = 'white';
+            container.style.background = 'blue';
+            container.style.padding = '30px';
+
+            // better approach => only one time dom update for style
+            let cssText = `
+            color: red;
+            background:blue;
+            font-size: 20px;
+            border: 2px solid black;
+            padding: 10px;
+            `;
+
+            container.style.cssText = cssText;
+        });
+
+    </script>
+</body>
+
+</html>
