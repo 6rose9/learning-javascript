@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry</title>
+    <style>
+        .box {
+            border: 1px solid gray;
+            width: 200px;
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="goDown">Go Down</button>
+    &nbsp;
+    <button id="goDownEffect">Go Down Effect</button>
+    &nbsp;
+
+    <div id="container" class="box">Container</div>
+    <script>
+        // document.addEventListener('click', (e)=>{
+        //     console.log('Document clicked x ', e.clientX, ' y ', e.clientY);
+        //     let element = document.elementFromPoint(e.clientX, e.clientY);
+        //     console.log('Element at point is ', element);
+        // });
+
+        // let container = document.getElementById('container');
+        // console.log('container', container.getBoundingClientRect());
+
+        document.getElementById('goDown').addEventListener('click', () => {
+            let documentHeight = document.documentElement.offsetHeight;
+            let viewportHeight = window.innerHeight;
+            let scrollTo = documentHeight - viewportHeight;
+            console.log('Document Height ', documentHeight);
+            console.log('Viewport Height ', viewportHeight);
+            console.log('ScrollTo ', scrollTo);
+            window.scrollTo(0, scrollTo);
+        });
+
+        document.getElementById('goDownEffect').addEventListener('click', () => {
+            let documentHeight = document.documentElement.offsetHeight;
+            let viewportHeight = window.innerHeight;
+            let scrollTo = documentHeight - viewportHeight;
+
+            let timer = setInterval(() => {
+                window.scrollBy(0, 100);
+                scrollTo -= 100;
+                if (scrollTo <= 0) {
+                    clearInterval(timer);
+                }
+
+            }, 500); // 0.5s
+        });
+
+    </script>
+</body>
+
+</html>

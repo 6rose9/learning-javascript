@@ -9,3 +9,11 @@ https://fsharpforfunandprofit.com/rop/
 https://momentjs.com/
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+
+https://svgjs.dev/docs/3.2/
+
+https://d3-graph-gallery.com/
+
+https://d3js.org/
+
+https://threejs.org/
