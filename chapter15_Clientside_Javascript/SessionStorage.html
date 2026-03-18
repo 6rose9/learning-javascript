@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage</title>
+</head>
+
+<body>
+    <div id="name"></div>
+    <br>
+    <button id="clearBtn">Clear Session Storage</button>
+
+    <h3>Session Storage</h3>
+    <ul>
+        <li>Accessible only within the same origin (protocol, domain, port)</li>
+        <li>Data persists only for the duration of the page session (tab)</li>
+        <li>Cleared automatically when the tab or browser is closed</li>
+        <li>Stores data as key–value pairs (values are strings)</li>
+        <li>Storage limit ~5MB (varies by browser)</li>
+        <li>⚠️ Not secure — avoid storing sensitive data (XSS risk)</li>
+        <li>Same origin + same tab → data is accessible ✔️ </li>
+        <li>Same origin + different tab → data is NOT shared ❌ </li>
+    </ul>
+
+    <script>
+        let name = sessionStorage.getItem('username');
+
+        if (!name) {
+            name = prompt("Enter your name:");
+            sessionStorage.setItem('username', name);
+        }
+
+        document.getElementById('name').innerText = `Hello ${name}`;
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            sessionStorage.clear();
+            console.log('Session storage cleared');
+        });
+    </script>
+</body>
+
+</html>

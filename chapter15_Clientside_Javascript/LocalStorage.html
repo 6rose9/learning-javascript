@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+</head>
+
+<body>
+    <div id="name"></div>
+    <br>
+    <button id="clearBtn">Clear LocalStorage</button>
+    <br>
+    <h3>Local Storage</h3>
+    <ul>
+        <li>Accessible only within the same origin (protocol, domain, port)</li>
+        <li>Persistent storage (no expiration, survives reloads & browser restarts)</li>
+        <li>Must be cleared manually (JavaScript or browser settings)</li>
+        <li>Stores data as key–value pairs (values are strings)</li>
+        <li>Storage limit ~5–10MB (varies by browser)</li>
+        <li>⚠️ Not secure — avoid storing sensitive data (XSS risk)</li>
+    </ul>
+    <script>
+        let name = localStorage.username;
+        if (!name) {
+            name = prompt("Enter your name: ");
+            localStorage.username = name;
+        }
+        document.getElementById('name').innerText = `Hello ${name}`;
+        // console.log('Name from local storage ', name);
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            localStorage.clear();
+            console.log('clear local storage: done')
+        });
+    </script>
+</body>
+
+</html>
