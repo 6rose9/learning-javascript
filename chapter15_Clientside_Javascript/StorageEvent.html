@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Event</title>
+</head>
+
+<body>
+    <script>
+        // want cross tab communication (localStorage, sessionStorage...)
+        window.addEventListener('storage', function (event) {
+            console.log('Storage event fired ');
+            console.log('key ', event.key);
+            console.log('oldValue ', event.oldValue);
+            console.log('newValue ', event.newValue);
+            console.log('url ', event.url);
+            console.log('storageArea ', event.storageArea);
+        });
+    </script>
+</body>
+
+</html>
