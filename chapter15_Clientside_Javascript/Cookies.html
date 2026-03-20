@@ -15,11 +15,15 @@
                 – Cannot be accessed by JavaScript (e.g., document.cookie). Helps prevent XSS attacks.
             </li>
             <li><strong>Secure Cookie</strong> – Only sent over HTTPS connections.</li>
-            <li><strong>Client-accessible Cookie</strong> – Can be read/written using document.cookie in the browser.</li>
+            <li><strong>Client-accessible Cookie</strong> – Can be read/written using document.cookie in the browser.
+            </li>
         </ul>
     </div>
     <script>
-
+        // only store string
+        document.cookie = "usertype=student";
+        document.cookie = "username=crystal; expires=Fri, 31 Dec 2026 23:59:59 UTC; path=/";
+        console.log(document.cookie);
     </script>
 </body>
 

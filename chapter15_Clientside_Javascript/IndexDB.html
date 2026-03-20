@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndexDB</title>
+</head>
+
+<body>
+    <h3>IndexedDB</h3>
+    <ul>
+        <li>Client-side NoSQL database in the browser</li>
+        <li>Stores large amounts of structured data</li>
+        <li>Asynchronous (non-blocking)</li>
+        <li>Data stored as key-value pairs (objects, not just strings)</li>
+        <li>Supports indexes for fast searching (query)</li>
+        <li>Same-Origin policy applies</li>
+    </ul>
+
+    <h3>What IndexedDB actually is</h3>
+    <p>It’s a built-in storage engine inside the browser</p>
+    <ul>
+        <li>No server</li>
+        <li>No installation</li>
+        <li>Works locally on user’s device</li>
+    </ul>
+
+    <h3>Is IndexedDB secure?</h3>
+    <ul>
+        <li>✔️ Same-Origin Policy → only your domain can access it</li>
+        <li>✔️ Not sent over network automatically (unlike cookies)</li>
+        <li>✔️ Good for storing non-sensitive large data</li>
+    </ul>
+
+    <h3>Can IndexedDB be used for cache?</h3>
+    <ul>
+        <li>Cache API responses (so app works offline)</li>
+        <li>Store large JSON data</li>
+        <li>Save user progress (offline-first apps)</li>
+        <li>Cache-first strategy</li>
+    </ul>
+
+    <h3>IndexedDB Lifetime</h3>
+    <p>IndexedDB data is persistent</p>
+    <ul>
+        <li>page reload</li>
+        <li>tab close</li>
+        <li>browser restart</li>
+    </ul>
+    <p>Removed only when:</p>
+    <ul>
+        <li>user clears browser data</li>
+        <li>your app deletes it</li>
+        <li>browser clears storage (rare, low disk, privacy mode)</li>
+    </ul>
+
+    <!-- ----------------------------------------------------------------------------- -->
+    <hr>
+
+    <h3>What is Dexie?</h3>
+    <p>Using Dexie makes IndexedDB way easier. It is a wrapper library for IndexedDB.</p>
+    <ul>
+        <li>Cleaner syntax</li>
+        <li>Promise-based (no messy events)</li>
+        <li>Much closer to how you’d expect a database to feel</li>
+    </ul>
+
+    <script src="https://unpkg.com/dexie/dist/dexie.js"></script>
+    <script>
+        (async function () {
+
+            const db = new Dexie("MyDB");
+
+            db.version(1).stores({
+                users: "++id, name, age"
+            });
+
+            await db.users.add({
+                name: "Crystal",
+                age: 22
+            });
+
+            const users = Array.from({ length: 10 }, (_, i) => ({
+                name: `User${i + 1}`,
+                age: 20 + i
+            }));
+
+            await db.users.bulkAdd(users);
+
+            const allUsers = await db.users.toArray();
+            console.log(allUsers);
+
+            const result = await db.users
+                .where("age")
+                .above(18)
+                .toArray();
+
+            await db.users.update(1, { age: 25 });
+
+            await db.users.delete(1);
+
+        })();
+    </script>
+
+</body>
+
+</html>
