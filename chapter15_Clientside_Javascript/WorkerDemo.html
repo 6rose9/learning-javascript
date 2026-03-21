@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Worker Demo</title>
+</head>
+
+<body>
+    <div>
+        <h3>What is Worker?</h3>
+        <ul>
+            <li>Web API provided by the browser</li>
+            <li>Used to run JavaScript in a background thread</li>
+            <li>Prevents blocking the main UI thread</li>
+        </ul>
+    </div>
+    <div class="">
+        <h3>⚠️ Important Limitations</h3>
+        <ul>
+            <li>❌ Cannot access DOM</li>
+            <li>❌ Cannot use document, window</li>
+            <li>✅ Can use:fetch, setTimeout, IndexedDB,...</li>
+        </ul>
+    </div>
+    <script>
+
+        setTimeout(() => {
+            console.log('set timeout executed after 0 ms');
+        }, 0);
+
+        let worker = new Worker('./js/worker1.js');
+        // console.log(worker);
+        worker.postMessage({
+            value: 10,
+        });
+
+        worker.onmessage = (event) => {
+            console.log('Message received from worker:', event.data);
+        }
+
+        setTimeout(() => {
+            console.log('set timeout executed after 10 ms');
+        }, 10);
+
+    </script>
+</body>
+
+</html>

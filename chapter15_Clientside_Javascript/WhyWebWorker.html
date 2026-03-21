@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Worker</title>
+</head>
+
+<body>
+    <script>
+        // Web API Provided by browser (or Node.js)
+        setTimeout(() => {
+            console.log('settimeout executed after 0 ms');
+        }, 0);
+
+        function delay(ms) {
+            let start = new Date();
+            while ((new Date() - start) < ms) {
+                console.log('Loading.........')
+            }
+        }
+
+        console.log('Starting heavy computation on main thread');
+        delay(2000);
+        console.log('Finishing heavy computation on main thread');
+    </script>
+</body>
+
+</html>
