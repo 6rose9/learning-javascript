@@ -1,4 +1,5 @@
 const fs = require('node:fs');
+const fsPromises = require('node:fs/promises');
 console.log('start...');
 
 // async
@@ -8,7 +9,7 @@ fs.readFile('files/hello.txt', 'utf8', (err, data) => {
     }
 });
 
-fs.Promises.readFile('files/hello.txt', 'utf8')
+fsPromises.readFile('files/hello.txt', 'utf8')
     .then(data => {
         console.log(data);
     }).catch(err => {
