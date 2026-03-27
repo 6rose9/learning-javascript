@@ -1,4 +1,5 @@
 const net = require('node:net');
+const fs = require('node:fs');
 // const server = net.createServer(socket => {
 //     console.log('Client connected');
 //     socket.on('data', (data) => {
@@ -15,18 +16,46 @@ const net = require('node:net');
 const server = net.createServer();
 
 function writeResponse(socket, url) {
-    let body = `<html>
-    <h1>Hello from Custom HTTP Server</h1>
-    </html>`;
 
-    // format
-    let response = `HTTP/1.0 200 OK\r\n`
-        + 'Content-Type: text/html\r\n'
-        + 'Connection: Closed\r\n\r\n'
-        + body;
+    let body;
 
-    socket.write(response);
-    socket.end();
+    if (url.endsWith('.html')) {
+        let filePath = `./files${url}`;
+        console.log('url ', url);
+        console.log('filePath ', filePath);
+
+        if (fs.existsSync(filePath)) {
+            body = fs.readFileSync(filePath, 'utf-8');
+        } else {
+
+            body = `<html>
+                        <h1>Not Found</h1>
+                    </html>`;
+
+            // format
+            let response = `HTTP/1.0 400 NotFound\r\n`
+                + 'Content-Type: text/html\r\n'
+                + 'Connection: Closed\r\n\r\n'
+                + body;
+
+            socket.write(response);
+            socket.end();
+        }
+    } else {
+
+        body = `<html>
+                 <h1>Hello from Custom HTTP Server</h1>
+                </html>`;
+
+        // format
+        let response = `HTTP/1.0 200 OK\r\n`
+            + 'Content-Type: text/html\r\n'
+            + 'Connection: Closed\r\n\r\n'
+            + body;
+
+        socket.write(response);
+        socket.end();
+    }
 }
 
 server.on('connection', socket => {
@@ -47,8 +76,9 @@ server.on('connection', socket => {
         console.log(`Method: ${method}, URL: ${url}`);
         console.log(request);
 
-        socket.write(`Echo from server: ${request}`);
-        socket.end();
+        // socket.write(`Echo from server: ${request}`);
+        // socket.end();
+        writeResponse(socket, url);
     });
 
     // End event: called when the client disconnects
