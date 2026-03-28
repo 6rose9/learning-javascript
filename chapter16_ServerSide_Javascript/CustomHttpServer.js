@@ -26,29 +26,25 @@ function writeResponse(socket, url) {
 
         if (fs.existsSync(filePath)) {
             body = fs.readFileSync(filePath, 'utf-8');
+            writeResponseBody(body, socket, '200 OK');
         } else {
 
             body = `<html>
                         <h1>Not Found</h1>
                     </html>`;
 
-            // format
-            let response = `HTTP/1.0 400 NotFound\r\n`
-                + 'Content-Type: text/html\r\n'
-                + 'Connection: Closed\r\n\r\n'
-                + body;
-
-            socket.write(response);
-            socket.end();
+            writeResponseBody(body, socket, '400 Not Found');
         }
     } else {
 
         body = `<html>
                  <h1>Hello from Custom HTTP Server</h1>
                 </html>`;
+        writeResponseBody(body, socket, '400 Bad Request')
+    }
 
-        // format
-        let response = `HTTP/1.0 200 OK\r\n`
+    function writeResponseBody(body, socket, status) {
+        let response = `HTTP/1.0 ${status}\r\n`
             + 'Content-Type: text/html\r\n'
             + 'Connection: Closed\r\n\r\n'
             + body;
