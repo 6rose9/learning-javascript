@@ -1,0 +1,7 @@
+let obj = {
+    name: "TK",
+    age: 40
+};
+
+console.log('Obj ', obj);
+console.log('type of ', typeof obj);
