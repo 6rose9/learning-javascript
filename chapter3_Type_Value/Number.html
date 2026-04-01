@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number</title>
+</head>
+
+<body>
+    <ol>
+        <li>Integers (positive, negative, zero)</li>
+        <li>Floating-point numbers (decimals)</li>
+        <li>Special numeric values (Infinity, -Infinity, NaN)</li>
+        <li>Scientific notation (1e6, 1e-3)</li>
+    </ol>
+
+    <div>
+        <strong>Note: </strong>
+        <span>JavaScript uses 64-bit floating-point for all numbers. </span>
+        <span>So even integers are internally floats</span>
+        <span>Some decimals cannot be represented exactly in binary (e.g, 0.1, 0.2)</span>
+        <p>0.1 + 0.2 === 0.3 // false</p>
+        <p>0.1 + 0.2 // 0.30000000000000004</p>
+    </div>
+
+    <script>
+        let a = 10;
+        console.log(`typeof ${a}:`, typeof a); // number
+
+        a = 1.5;
+        console.log(`typeof ${a}:`, typeof a); // number
+
+        console.log(`10/0 is`, 10 / 0); // Infinity
+
+        console.log(`typeof Infinity`, typeof Infinity); // number
+
+        console.log(`3/2 is `, 3 / 2); // 1.5
+
+        console.log(`1.4 + 1.6 === 3`, 1.4 + 1.6 === 3); // true
+        console.log(`0.1 + 0.2 === 0.3`, 0.1 + 0.2 === 0.3); // false
+
+        console.log(`0.1 + 0.2`, 0.1 + 0.2); //0.30000000000000004
+    </script>
+</body>
+
+</html>
