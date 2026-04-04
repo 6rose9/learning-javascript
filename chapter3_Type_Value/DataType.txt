@@ -1,0 +1,51 @@
+Primitive Data Types
+
+In JavaScript, primitive data types are the most basic kinds of data. 
+They are immutable (cannot be changed directly) and stored by value.
+Stored by value (not reference)
+
+1. number
+2. string
+3. boolean
+4. undefined
+5. null
+6. symbol
+7. BigInt
+
+---------------------------------------------------------
+
+Non-Primitive Data Types
+
+### stored by reference
+### mutable
+
+1. array
+2. object 
+
+------------------------------------------------------------
+
+Notes: null is a primitive, but:
+
+typeof null === "object"; // weird JS bug
+
+typeof [] === "object"; // true
+Array.isArray([]); // true
+
+Array ✅ → Object
+Object ❌ → Not always an array
+
+
+*****     in JavaScript, a string is not a character array.    *****
+
+let str = "hello";
+
+console.log(typeof str);        // "string"
+console.log(Array.isArray(str)); // false
+
+You can access characters like an array,
+But this is just read-only access, not real array behavior.
+
+String (immutable ❌)
+Array (mutable ✅)
+
+String just acts like an array for reading
