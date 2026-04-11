@@ -1,24 +1,57 @@
-<html>
-<script>
-    function hello() {
-        console.log("Hello World");
-        console.log("First data is  ", data);
-        var data = 10;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    hello();
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Declaration</title>
+</head>
+
+<body>
+
+    <p>The declaration var data is hoisted to the top of the function.</p>
+    <p>But its assignment (= "JavaScript") is NOT hoisted.</p>
+
+    <hr>
+
+    <div>Function Scope</div>
+    <ul>
+        <li>var</li>
+        <li>hoisting: yes</li>
+        <li>redeclared: yes</li>
+        <li>can access from any where of parent function</li>
+    </ul>
+
+    <div>Block Scope</div>
+    <ul>
+        <li>let, const</li>
+        <li>hoisting: no</li>
+        <li>redeclared: no</li>
+        <li>within block</li>
+    </ul>
+
+    <script>
+        function hello() {
+            // function scope
+            console.log('First data is ' + data);
+            var data = "JavaScript";
+
+            test = "Testing"; // global leak / window scope
+
+            // block scope
+            {
+                let str = "Hello";
+                console.log('str is ', str);
+            }
+
+            // console.log('str is ', str); // error 
+        }
+
+        hello(); // First data is undefined
+
+        // console.log('First data is ' + data); //error
+        console.log('window variable inside function: ', test); // Testing
+    </script>
+</body>
 
 </html>
-
-
-
-<!-- 
-
-function / block scoped
-
-hoisting / no
-redeclared / no
-can access from any where / within block 
-
--->

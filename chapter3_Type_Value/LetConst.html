@@ -1,11 +1,18 @@
 <html>
 <script>
-    data = 20;
-    var top = 10;
-    console.log('top is ', top === 10);
+    data = 20; // bad practice
+    
+    // let top = 10; Uncaught SyntaxError: Identifier 'top' has already been declared
+    
+    var top = 10; // bad practice
+    console.log(top === 10); // false
+    console.log('top is', top); // Window{...}
+    console.log('typeof top',typeof(top)); // object
+
     function hello() {
         str = "hello";
     }
+
     hello();
     console.log('data is ', data);
 
