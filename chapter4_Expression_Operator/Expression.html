@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <title>Expression</title>
+</head>
+
+<body>
+    <h3>An expression is any piece of code that produces (returns) a value</h3>
+
+    <ol>
+        <li>Primary Expression</li>
+        <li>Complex Expression</li>
+    </ol>
+
+    <script>
+        // ---------------------------------------------primary expression (only literal)
+        42              // number literal
+        "hello"         // string literal
+        true            // boolean
+        null
+        undefined
+        x               // variable (identifier)
+        this            // keyword
+
+        // ---------------------------------------------complex expression (combining multiple expressions together with operator)
+        10 + 5              // arithmetic expression
+        x * 2               // uses variable
+        a > b               // comparison
+        (x + 5) * 2         // grouped expression
+        Math.max(10, 20) + 5
+
+        let obj = {
+            name: "hello",
+            age: 30,
+        };
+
+        // object initializer to assign obj variable
+        // {
+        //     name: "hello",
+        //     age: 30,
+        // };
+
+        let arr = [10, 20, 30];
+        // array initializer to assign arr variable
+        // [10, 20, 30]
+
+        function greet() {
+            console.log("hello");
+            console.log("world");
+        }
+        // function definition expression
+        // greet() {
+        //     console.log("hello");
+        //     console.log("world");
+        // }
+
+        greet();
+        console.log("Another");
+
+        greet();
+
+        let fun = function () {
+            console.log("hello world");
+        };
+
+        fun(); // invocation
+        fun = undefined;
+
+        fun?.(); // conditional invocation
+
+        let obj1 = {
+            name: "John",
+            age: 30,
+            address:{
+                city: "New York",
+            }
+        }
+
+        // property access expression
+        console.log('Name ', obj.name);
+        console.log('Name ', obj['name']);
+        console.log('City', obj1?.address?.city); // conditional proerty access
+
+        let arr1 = [10,20];
+        console.log('First Element ', arr[0]);
+
+        let date = new Date(); // object creation expression
+        console.log('Date ', date.toDateString());
+
+    </script>
+</body>
+
+</html>
+
+<!-- 
+
++a //unary operator
+a + b //binary ooperator
+a > 0 ? positive " : "negative"; // tenary operator
+
+
+-->
