@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precedence</title>
+</head>
+
+<body>
+    <script>
+        // () * / % + - 
+        // right to left
+        let result = 1 + 2 * 3 - 3 / 3;
+        console.log('1 + 2 * 3 - 3 / 3', result); // 6
+
+        // same precedence -> order by associativity 
+        /*
+            2 ** 2 = 4
+            3 ** 4 = 81
+            2 * 81 = 162
+            1 + 162 = 163
+        */
+        result = 1 + 2 * 3 ** 2 ** 2; 
+        console.log('1 + 2 * 3 ** 2 ** 2', result); // 163
+
+        let c = 4;
+        let d = 3;
+        console.log('c * d', c * d); // there is no side effect
+
+        d++; // side effect due to ++ operator
+        console.log('c * d', c * d); 
+
+
+    </script>
+</body>
+
+</html>
