@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetics</title>
+</head>
+
+<body>
+    <p> object -> object to primitive conversion </p>
+    <p> one of operands is string -> concate </p>
+
+    <script>
+        let data = "2" + 3;
+        console.log(data); // 23
+        console.log(typeof data); // string
+
+        data = "2" + "3";
+        console.log(data); // 23
+        console.log(typeof data); // string
+
+        //--------------------------------------------
+
+        let obj1 = {
+            valueOf() {
+                console.log('valueOf called');
+                return 4; // number
+            }
+        }
+
+        let res = obj1 + 2; // 6
+        console.log(res, typeof res);
+
+        //--------------------------------------------
+
+        let obj2 = {
+            valueOf() {
+                console.log('valueOf called');
+                return '4'; // string
+            }
+        }
+
+        let res2 = obj2 + 2; // 42
+        console.log(res2, typeof res2);
+
+        //--------------------------------------------
+
+        let obj3 = {
+            valueOf() {
+                console.log('valueOf called');
+                return false; // boolean
+            }
+        }
+
+        let res3 = obj3 + 2; // 2
+        console.log(res3, typeof res3); // number
+
+        //--------------------------------------------
+
+        let a = -10;
+        let b = -a;
+
+        console.log(a, b); // -10, 10
+
+        a = -10;
+        b = +a;
+
+        console.log(a, b); // -10, -10
+    </script>
+</body>
+
+</html>
