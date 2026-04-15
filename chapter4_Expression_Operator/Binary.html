@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary</title>
+</head>
+
+<body>
+    <div>
+        <h1>Any base → Decimal</h1>
+        <p>multiplication</p>
+        <pre>
+            101₂ = 1×2² + 0×2¹ + 1×2⁰ = 4 + 0 + 1 = 5
+        </pre>
+    </div>
+
+    <div>
+        <h1>Decimal → Any base</h1>
+        <p>division by the target base</p>
+        <pre>
+            5 ÷ 2 = 2 remainder 1
+            2 ÷ 2 = 1 remainder 0
+            1 ÷ 2 = 0 remainder 1
+        </pre>
+        <p>Read remainders from bottom to top</p>
+        <pre>5₁₀ = 101₂</pre>
+    </div>
+
+    <hr>
+
+    <p>| → “bit level OR”</p>
+    <p>|| → “condition OR”</p>
+    <pre>
+        console.log(5 | 3); // 7
+        console.log(5 || 3); // 5
+    </pre>
+
+    <pre>
+        console.log('~3', ~3); // -3
+        console.log('!3', !3); // false
+    </pre>
+
+    <script>
+        let a = 2;
+        let b = 3;
+
+        /*
+        AND = all true -> true
+        0 0 = 0
+        0 1 = 0
+        1 0 = 0
+        1 1 = 1
+        */
+
+        console.log('a ', a.toString(2)); // 10
+        console.log('b ', b.toString(2)); // 11
+        console.log('a AND b', (a & b).toString(2)); // 10
+
+        /*
+        OR = one true -> true
+        0 0 = 0
+        0 1 = 1
+        1 0 = 1
+        1 1 = 1
+        */
+        console.log('a OR b', (a | b).toString(2)); // 11
+
+        /*
+        XOR = same -> false
+        0 0 = 0
+        0 1 = 1
+        1 0 = 1
+        1 1 = 0
+        */
+        console.log('a XOR b', (a ^ b).toString(2)); // 1
+
+        /*
+        NOT
+        0 = 1
+        1 = 0
+        0 = 1
+        1 = 0
+        */
+        console.log('~a', ~a); // -3
+        console.log('!a', !a); // false
+
+        console.log(5 | 3); // 7
+        console.log(5 || 3); // 5
+    </script>
+</body>
+
+</html>
