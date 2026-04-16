@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relational</title>
+</head>
+
+<body>
+    <h1>==</h1>
+    <h3>string -> convert to number</h3>
+    <h3>boolean -> convert to number</h3>
+    <h3>otherwise -> not convert</h3>
+    <script>
+        console.log('2 === "2" ', 2 === '2'); // false
+        console.log('"2" === "2"', "2" === "2"); // true
+
+        console.log('null == undefined', null == undefined); // true
+        console.log('null === undefined', null === undefined); // false
+
+        // logical thinking (==)
+        // if type not the same, convert type number.
+
+        console.log("5 == '5'", 5 == '5'); // convert string '5' to number 5 and then compare // true 
+        console.log("5 == true", 5 == true); // conver boolean true to number 1 and then compare //false
+
+        console.log("true == '1'", true == '1'); // true -> +true => 1, '1' -> +1 => 1 // true
+        console.log("'' == false", '' == false); // +'' -> 0, +false -> 0 // true
+
+        let obj = {
+            valueOf() {
+                console.log('value of');
+                return '120';
+            }
+        }
+
+        console.log('obj == 120', obj == 120); // true
+
+        console.log('NaN == NaN', NaN == NaN); // false
+        console.log('null == undefined', null == undefined); // true
+
+        console.log('null == false', null == false); // false
+        console.log('null == 0', null == 0); // false
+
+        console.log('undefined == false', undefined == false); // false
+        console.log('undefined == 0', undefined == 0); // false
+
+        // one of operand is number ? -> convert number both -> compare
+        // string ? -> compare
+        console.log('2 < "3"', 2 < "3"); // true
+        console.log('"2" < "3"', '2' < '3'); // true
+
+        console.log('"apple" < "banana"', "apple" < "banana"); // true
+
+    </script>
+</body>
+
+</html>
