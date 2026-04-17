@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Operator</title>
+</head>
+
+<body>
+    <script>
+        console.log('false && false', false && false); // false
+        console.log('true && true', true && true); // true
+
+        let obj = {}
+        console.log('obj && hello', obj && 'hello'); // hello
+        console.log('"" && hello', "" && 'hello'); // 
+
+        console.log("obj || 'hello'", obj || "hello"); // {}
+        console.log("'', 'hello'", "" || 'hello'); // hello
+
+        
+    </script>
+</body>
+
+</html>
