@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Defined</title>
+</head>
+<body>
+    <h1>??</h1>
+    <p>check LHS ->  null / undefined ?</p>
+
+    <hr>
+    
+    <div>Notes:
+        <p>|| check falsy ? </p>
+        <p>?? check null / undefined ?</p>
+    </div>
+    <script>
+        function plugin(width){
+            // let w = width || 100; // return 100 if width 0
+            let w = width ?? 100; // return 0 if width 0
+            console.log('width is ',w);
+        }
+
+        // plugin(0);
+        // plugin(NaN); // width is  NaN
+        // plugin(""); // width is  
+
+    </script>
+</body>
+</html>
