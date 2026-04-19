@@ -1,0 +1,18 @@
+<html>
+
+<head>
+    <title>Comma Operator</title>
+</head>
+<script>
+    let a, b;
+    // left to right execute then return rightmost
+    let c = (a = 2, b = 3, console.log('first'), console.log('second '), a + b);
+    console.log('c ', c);
+
+    // example usage- for loop
+    for (let i = 0, j = 10; i < j; i++, j--) {
+        console.log(i + j);
+    }
+</script>
+
+</html>

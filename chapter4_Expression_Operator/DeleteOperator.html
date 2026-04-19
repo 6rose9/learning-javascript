@@ -1,0 +1,15 @@
+<html>
+<script>
+    let obj = {
+        x: 100,
+        y: 200,
+    };
+
+    console.log('obj before delete ', obj);
+    delete obj.x;
+    console.log('obj after delete ', obj);
+
+    console.log('delete window.top ', delete window.top); // false
+</script>
+
+</html>

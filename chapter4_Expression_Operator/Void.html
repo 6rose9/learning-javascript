@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Void</title>
+</head>
+
+<body>
+    <a href="javascript:void(document.body.style.backgroundColor = 'green');">
+        Green Background
+    </a>
+    <script>
+        function getSomething() {
+            return 1000;
+        }
+
+        let x = getSomething();
+        console.log('x ', x); // x 1000
+
+        let y = void(getSomething());
+        console.log('y ', y); // undefined
+
+    </script>
+</body>
+
+</html>
