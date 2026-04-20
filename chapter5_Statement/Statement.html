@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <title>Statement</title>
+</head>
+
+<body>
+    <h1>Statement</h1>
+    <h3>complete sentence to instruct computer</h3>
+
+    <ul>
+        <li>Expression statement</li>
+        <li>Variable declaration statement</li>
+        <li>Empty Statement</li>
+    </ul>
+
+    <p>Anything that produces/returns a value -> expression</p>
+    <p>If you put expression with ; -> expression statement</p>
+    <p>Empty statement -> a statement with no action, written as ;</p>
+    <p>Compound (block) statement -> a group of zero or more statements wrapped inside { }</p>
+
+
+    <script>
+        // -------------------------------------------------variable declaration statement
+        let greeting, i, x;
+        let obj = [];
+
+        // -------------------------------------------------expression statement
+        delete obj.x;
+        i < 3;
+
+        // assignment -> expression statement
+        greeting = "Hello ";
+        i *= 3;
+        i++;
+        --i;
+
+        // function call -> expression statement
+        console.log(i); // NaN
+        Math.cos(x);
+
+        // -------------------------------------------------empty statement
+        ;
+        let condition = false;
+        if (condition); // a statement with no action, written as ;
+        else
+            console.log('Condition is false');
+
+        let someCondition;
+        while (someCondition);
+
+        // -------------------------------------------------compound statement
+        // if (condition)
+        //     console.log('Condition is true');
+        //     console.log('Second line after condition true');
+        // else
+        // console.log('Condition is false');
+
+        if (condition) {
+            console.log('Condition is true');
+            console.log('Second line after condition true');
+        }
+        else
+            console.log('Condition is false');
+
+    </script>
+</body>
+
+</html>
