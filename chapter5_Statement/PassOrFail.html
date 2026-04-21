@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>Conditional Statement</title>
+</head>
+
+<body>
+    <script>
+        const myan = +window.prompt("Enter myanmar mark");
+        const eng = +window.prompt("Enter english mark");
+        const math = +window.prompt("Enter math mark");
+
+        if (myan < 40 || eng < 40 || math < 40)
+            console.log("Failed!");
+        else if (myan <= 100 && eng <= 100 && math <= 100)
+            console.log("Congraturation! You Passed.");
+        else console.log("Invalid value");
+
+    </script>
+</body>
+
+</html>
