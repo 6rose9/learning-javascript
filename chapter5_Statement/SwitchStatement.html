@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title>Control Structor / Conditional Statement</title>
+</head>
+
+<body>
+    <h1>Use Switch</h1>
+    <p>Compare one variable against many possible values</p>
+
+    <h1>When NOT to use switch</h1>
+    <ul>
+        <li>
+            Complex conditions
+            <p>if (score > 80) // better than switch</p>
+        </li>
+        <li>
+            Different variables in each condition
+            <p>if (a === 1 || b === 2) // switch can't handle this well</p>
+        </li>
+        <li>
+            Boolean expressions
+            <p>switch (true) { ... } // possible but NOT recommended (bad readability)</p>
+        </li>
+    </ul>
+
+    <p>Note: strict comparison (===),</p>
+
+    <script>
+        let num = +window.prompt("Enter a number range 0 to 10");
+        switch (num) {
+            case 0:
+                console.log("Start point...");
+                console.log("Zero");
+                break;
+            case 1:
+                console.log("One");
+                break;
+            case 2:
+                console.log("Two");
+                break;
+            case 3:
+                console.log("Three");
+                break;
+            case 4:
+                console.log("Four");
+                break;
+            case 5:
+                console.log("Five");
+                break;
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                console.log("Greater than 5");
+                break;
+            default:
+                console.log("Invalid range");
+        }
+        console.log("Done");
+    </script>
+</body>
+
+</html>
