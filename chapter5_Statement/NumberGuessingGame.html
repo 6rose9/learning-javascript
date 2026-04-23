@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Statement - Looping</title>
+</head>
+
+<body>
+    <h1>Algorithm: Guess Random Number (1–10)</h1>
+    <ol>
+        <li>Generate a random number between 1 and 10</li>
+        <li>Ask the user to guess a number</li>
+        <li>Read user input → guess</li>
+        <li>
+            Compare:
+            <ol>
+                <li>If guess == randomNumber → Print "Correct! You guessed it."</li>
+                <li>Else if guess < randomNumber → Print "Too low! Try again." </li>
+                <li>Else → Print "Too high! Try again."</li>
+            </ol>
+        </li>
+        <li>Repeat steps 2–4 until the user guesses correctly</li>
+    </ol>
+    <script>
+        const randomNumber = Math.round(Math.random() * 10);
+        // console.log(randomNumber);
+        let guess;  
+        do { 
+            guess = +prompt("Guess a number from 1 to 10");
+            if (guess < randomNumber) console.log("Low! Try again");
+            else if (guess > randomNumber) console.log("High! Try again");
+            else console.log("Congrats");
+        } while (guess !== randomNumber);
+    </script>
+</body>
+
+</html>
