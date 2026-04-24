@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title>Condition Statement | for of loop</title>
+</head>
+
+<body>
+    <div>
+        <h2>for</h2>
+        <p>can mutate array, full control</p>
+    </div>
+
+    <div>
+        <h2>for of</h2>
+        <p>array is still mutable — but for...of doesn’t give you direct access to modify it.</p>
+        <p>item should be "const" instead of "let" to prevent accidental reassignment</p>
+        <pre>
+            for...of only works with iterables
+            Examples of iterables:
+
+            ✅ Arrays
+            ✅ Strings
+            ✅ Maps
+            ✅ Sets
+
+            But a plain object:
+            let obj = { a: 1, b: 2 }; ❌ is not iterable
+
+            ✅ How to use for...of with objects (correct way)
+
+            You need to convert the object into something iterable:
+            1. Object.keys()
+            2. Object.values()
+            3. Object.entries()
+        </pre>
+    </div>
+
+    <div>
+        🔥 If you want to mutate using modern style, Use array.map()
+        <p>arr = arr.map(item => item * 2);</p>
+        <p>.map() is not for objects, it’s specifically for arrays.</p>
+    </div>
+
+    <div>
+        <p>forEach → just loop (no return)</p>
+    </div>
+
+    <div>
+        <p>for...in → works directly on objects ✅</p>
+    </div>
+
+    <script>
+        let arr = [10, 30, 53, 34];
+
+        // note -> can mutate array, full control
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] *= 2;
+            console.log('Arr [', i, ']', arr[i]);
+        }
+        console.log('Arr', arr);
+
+        // ------------------------------------------------------
+
+        arr = [10, 30, 53, 34];
+
+        // want value of array
+        for (let item of arr) {
+            console.log('Arr item', item);
+        }
+
+        for (let item of arr) { // item = arr[i]
+            item *= 2;
+            console.log('Arr item * 2', item);
+        }
+        console.log('Arr', arr);
+    </script>
+</body>
+
+</html>

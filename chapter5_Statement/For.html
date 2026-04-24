@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Control Statement | for loop</title>
+</head>
+
+<body>
+    <script>
+        let i = 0; // initialization
+
+        while (i < 5) { // condition
+            console.log("Hello", i);
+            i++; // step : may forget and inifinity loop
+        }
+
+        console.log('End of loop ', i);
+
+        // language designer design 'for' loop 
+        for (
+            i = 0;
+            i < 5;
+            i++
+        ) {
+            console.log("Hello ", i);
+        }
+        console.log('End of loop ', i);
+        console.log();
+
+        // debug loop using comma operator , left to right execute
+        for (
+            (console.log(`initial => ${i}`, i = 0));
+            (console.log(`condition ${i} < 5`, i < 3), i < 3);
+            (console.log(`counter control => ${i}`), i++)
+        ) {
+            console.log("Hello ", i);
+        }
+        console.log('End of loop ', i);
+
+    </script>
+</body>
+
+</html>
