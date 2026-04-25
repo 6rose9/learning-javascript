@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>for of usage</title>
+</head>
+
+<body>
+    <script>
+        // key -> value 
+        // unique key
+
+        const arr = new Map([
+            ["Yangon", "Aung Ko"],
+            ["Mandalay", "Htet Aung"],
+            ["Yangon", "Su Su"],
+            ["Bangkok", "Somchai"],
+            ["Tokyo", "Haruto"],
+            ["Yangon", "Kyaw Kyaw"],
+            ["Mandalay", "Mya Mya"],
+            ["Seoul", "Min-jun"],
+            ["Tokyo", "Yui"],
+            ["Bangkok", "Anan"],
+            ["Delhi", "Rahul"],
+            ["Delhi", "Priya"],
+            ["Dubai", "Ahmed"],
+            ["Dubai", "Fatima"],
+            ["London", "Oliver"],
+            ["London", "Jack"],
+            ["Paris", "Lucas"],
+            ["Paris", "Emma"],
+            ["Berlin", "Lukas"],
+            ["Berlin", "Anna"]
+        ]);
+
+        for (const item of arr) {
+            console.log(`${item}`);
+        }
+
+
+        const data = [
+            { city: "Yangon", name: "Aung Ko" },
+            { city: "Mandalay", name: "Htet Aung" },
+            { city: "Yangon", name: "Su Su" },
+            { city: "Bangkok", name: "Somchai" },
+            { city: "Tokyo", name: "Haruto" },
+            { city: "Yangon", name: "Kyaw Kyaw" },
+            { city: "Mandalay", name: "Mya Mya" },
+            { city: "Seoul", name: "Min-jun" },
+            { city: "Tokyo", name: "Yui" },
+            { city: "Bangkok", name: "Anan" },
+            { city: "Delhi", name: "Rahul" },
+            { city: "Delhi", name: "Priya" },
+            { city: "Dubai", name: "Ahmed" },
+            { city: "Dubai", name: "Fatima" },
+            { city: "London", name: "Oliver" },
+            { city: "London", name: "Jack" },
+            { city: "Paris", name: "Lucas" },
+            { city: "Paris", name: "Emma" },
+            { city: "Berlin", name: "Lukas" },
+            { city: "Berlin", name: "Anna" }
+        ];
+
+        const map = new Map();
+        for (const item of data) {
+
+            if (!map.has(item.city)) {
+                map.set(item.city, []);
+            }
+
+            let arr = map.get(item.city);
+            console.log(arr);
+            arr.push(item.name);
+
+        }
+
+        // console.info(typeof map); // object
+        // console.info(typeof data); // object
+        console.info(map);
+    </script>
+</body>
+
+</html>
