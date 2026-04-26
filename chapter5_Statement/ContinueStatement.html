@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <title>Jump Statement</title>
+</head>
+
+<body>
+    <script>
+        let i;
+        for (i = 0; i < 10; i++) {
+            if (i === 4) {
+                continue;
+            }
+            console.log('Loop ', i); // 0, 1, 2, 3, 5,6, 7, 8,9
+        }
+        console.log("End of loop", i); // 10
+    </script>
+</body>
+
+</html>

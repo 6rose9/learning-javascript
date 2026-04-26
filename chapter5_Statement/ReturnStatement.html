@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>Jump Statement</title>
+</head>
+
+<body>
+    <ul>
+        <li>break = exit loop only</li>
+        <li>continue = skip current iteration</li>
+        <li>return = exit function</li>
+    </ul>
+</body>
+
+<script>
+    function demo() {
+        let i;
+        for (i = 0; i < 10; i++) {
+            if (i === 0) {
+                continue;
+            }
+
+            if (i === 4) {
+                return; // immediately exits the entire function
+            }
+            console.log("Loop ", i);
+        }
+        console.log("End of loop", i); // due to return, this line doesn't reach
+    }
+
+    console.log('Before Demo');
+    demo();
+    console.log('After demo');
+
+</script>
+
+</html>
