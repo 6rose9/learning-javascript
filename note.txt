@@ -1,5 +1,7 @@
 https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
+https://jsstarpattern.onrender.com/
+
 https://ramdajs.com/docs/
 
 https://www.7urtle.com/documentation-7urtle-lambda
