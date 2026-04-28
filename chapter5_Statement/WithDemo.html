@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>With Statement</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            x: 10,
+            y: 20,
+        }
+
+        // obj.x = 100;
+        // obj.y = 245;
+
+        // should not use 
+        with (obj) {
+            x = 100;
+            y = 200;
+            z = 300; // it will be global variable
+        }
+
+        debugger; // should only use for dev debug
+        console.log('Obj ', obj);
+        console.log('Z', z);
+
+    </script>
+</body>
+
+</html>

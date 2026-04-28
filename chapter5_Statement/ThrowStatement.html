@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throw Statement</title>
+</head>
+
+<body>
+    <script>
+        function div(a, b) {
+            if (isNaN(a) || isNaN(b)) {
+                throw new Error("Either a or b is not a number");
+            }
+            return a / b;
+        }
+
+        try {
+            let result = div(100, 'e');
+            console.log('Result ', result);
+        } catch (error) {
+            console.log(error.message);
+        }
+        finally {
+            console.log('End');
+        }
+
+        function multi(a, b) {
+            if (isNaN(a) || isNaN(b)) {
+                throw new Error("Either a or b is not a number");
+            }
+            return a * b;
+        }
+
+        function another(a, b) {
+
+            try {
+                let result = multi(a, b);
+                return result;
+            } catch (error) {
+                console.log(error.message);
+            }
+            finally {
+                console.log('End');
+            }
+        }
+
+        console.log(another(56, 23));
+
+    </script>
+</body>
+
+</html>
