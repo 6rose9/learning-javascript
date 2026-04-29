@@ -1,0 +1,155 @@
+<html>
+
+<head>
+    <title>Use Strict Directive</title>
+    <style>
+        li {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>use strict</h3>
+
+    <ul>
+        <li>to indicate that the code follows (in the script or function) is strict code.</li>
+        <li>to prevent language bad.</li>
+    </ul>
+
+    <ol>
+        <li>with statement is not allowed </li>
+
+        <li>all variables must be declared</li>
+
+        <li>functions invoked as functions => 'this' value is undefined.</li>
+
+        <li>assignments to nonwritable properties => throw a TypeError </li>
+
+        <li>
+            attempts to create new properties on non-extensible objects
+            => throw a TypeError.
+        </li>
+
+        <li>code passed to eval() cannot declare variables or define functions</li>
+
+        <li>
+            arguments becomes a static copy
+            => No synchronization between parameters and arguments
+        </li>
+
+        <li>
+            SyntaxError is thrown if the delete
+            operator is followed by an unqualified identifier
+        </li>
+
+        <li>
+            an attempt to delete a nonconfigurable property
+            throws a TypeError
+        </li>
+
+        <li>
+            a syntax error for a function declaration to
+            have two or more parameters with the same name
+        </li>
+
+        <li>
+            eval and arguments are special identifiers =>
+            cannot use them like normal variable names
+        </li>
+
+        <li>
+            octal integer 0-7 literals (beginning with a 0 that is
+            not followed by an x) are not allowed
+        </li>
+
+        <li>
+            inspect how a function was called using call stack (execution chain) => blocked.
+
+            <p>arguments.callee → refers to the current function</p>
+
+            <p>arguments.caller → refers to the function that called it (non-standard)</p>
+
+            <p>function.caller → who called this function</p>
+        </li>
+
+    </ol>
+
+    <script>
+
+        "use strict";
+
+        let obj = {
+            x: 10,
+            y: 20,
+        };
+
+        // with(obj){
+        //     x = 200,
+        //     y = 20,
+        //     a = 50
+        // };
+        // Uncaught SyntaxError: Strict mode code may not include a with statement
+
+        // data = 300;
+        // UseStrict.html:35 Uncaught ReferenceError: data is not defined
+
+        function thisVaule() {
+            console.log(this);
+        }
+
+        thisVaule(); // undefined
+
+        // readonly property
+        // top = 10;
+        // UseStrict.html:45 Uncaught TypeError: Cannot set property top of #<Window> which has only a getter
+
+        eval("var apple = 10; var orange = 20;");
+        // console.log(apple, orange);
+        // Uncaught ReferenceError: apple is not defined
+
+        function demo(a) {
+            console.log('a -> ', a);           // 10
+            console.log('arg 0 -> ', arguments[0]); // 10
+
+            a = 20;
+            console.log('arg 0 -> ', arguments[0]); // 10 (NOT updated)
+
+            arguments[0] = 30;
+            console.log('a -> ', a);            // 20 (NOT updated)
+        }
+
+        demo(10);
+
+        let name = "zin zin";
+        // delete name;
+        // console.log(name);
+        // Uncaught SyntaxError: Delete of an unqualified identifier in strict mode.
+
+        // delete window.top;
+        // Uncaught TypeError: Cannot delete property 'top' of #<Window>
+
+        // function samePara(a, a) {
+        //     console.log(a, a);
+        // }
+        // Uncaught SyntaxError: Duplicate parameter name not allowed in this context
+
+        // eval = "hello";
+        // Uncaught SyntaxError: Unexpected eval or arguments in strict mode
+
+        // undefined = 100;
+        // Uncaught TypeError: Cannot assign to read only property 'undefined' of object '#<Window>'
+
+        // let num = 012;
+        // Uncaught SyntaxError: Octal literals are not allowed in strict mode.
+
+        function test() { }
+
+        // console.log(test.caller);  
+        // console.log(test.arguments)
+        // Uncaught TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+
+    </script>
+</body>
+
+</html>
