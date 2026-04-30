@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>Object</title>
+</head>
+
+<body>
+    <script>
+        // properties for book1
+        let title1 = "Fast and Slow thinking";
+        let author1 = "Daniel Kahenman";
+        let year1 = 2011;
+
+        // properties for book2
+        let title2 = "How to win friends and influence people";
+        let author2 = "Danel Carnegie";
+        let year2 = 1988;
+
+        let book1 = {
+            title: "Fast and Slow thinking",
+            author: "DAniel Kahneman",
+            year: 2011,
+        };
+
+        let book2 = {
+            title: "How to win friends and influence people",
+            author: "Danel Carnegie",
+            year: 1988
+        };
+
+        let book3 = {
+            title: "How to win friends and influence people",
+            author: {
+                firstname : "Danel",
+                lastname: "Carnegie",
+            },
+            year: 1988
+        };
+
+        let books = [book1, book2, book3];
+
+        // dynamic and mutable
+        book1.price = 30000;
+
+        for (const book of books) {
+            console.log(book);
+        }
+
+    </script>
+</body>
+
+</html>
